@@ -14,5 +14,5 @@ while True:
             model="gpt-4", messages=messages
         ) 
     reply = chat.choices[0].message.content 
-    print(f"ChatGPT: {reply}") 
+    print(f"ChatGPT: {reply}")
     messages.append({"role": "assistant", "content": reply}) 
