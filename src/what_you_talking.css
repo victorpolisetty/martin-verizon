@@ -1,4 +1,4 @@
-/* Update your CSS */
+/* Updated CSS */
 body {
     margin: 0;
     padding: 0;
@@ -8,7 +8,7 @@ body {
       rgba(29, 39, 54, 0) 72%
     );
     min-height: 100vh;
-    font-family: 'Nunito', sans-serif; 
+    font-family: 'Nunito', sans-serif;
   }
   
   .ChatBot {
@@ -22,7 +22,7 @@ body {
   .chat-content {
     text-align: center;
     padding: 20px;
-    font-family: 'Nunito', sans-serif; 
+    font-family: 'Nunito', sans-serif;
   }
   
   button {
@@ -32,10 +32,49 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-family: 'Nunito', sans-serif; 
+    font-family: 'Nunito', sans-serif;
   }
   
   button:hover {
     background-color: #b41b1b;
+  }
+  
+  /* Styles for chat container, avatar, and chat box */
+  .chat-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    background-color: #F2F4F6;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 80%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .avatar-container {
+    margin-right: 20px;
+  }
+  
+  .avatar-container img {
+    max-width: 60px;
+    height: auto;
+    border-radius: 50%;
+  }
+  
+  .chat-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Styles for chat messages */
+  .chat-message {
+    background-color: #ffffff;
+    padding: 10px 15px;
+    border-radius: 15px;
+    margin: 5px 0;
+    max-width: 70%;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   }
   

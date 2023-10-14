@@ -32,7 +32,11 @@ function ChatBot() {
       // Handle the transition to the next step (step 7)
       setStep(7);
     }
+    else if (step === 7) {
+      // Handle the transition to the next step (step 7)
+      setStep(8);
   };
+}
 
   const handleBack = () => {
     if (step > 1) {
@@ -55,7 +59,7 @@ function ChatBot() {
     } else if (step === 2) {
       return (
         <div>
-          <p>How many lines would you like to have on your plan?</p>
+          <p>Let's learn more about what you want! How many lines would you like to have on your plan?</p>
           <input
             type="range"
             min="1"
@@ -110,7 +114,7 @@ function ChatBot() {
     } else if (step === 4) {
       return (
         <div>
-          <p>Are you classified as any of the following?</p>
+          <p>Do you fall under any of the the following?</p>
           <ul className="no-bullet-points">
             <li>
               <label>
@@ -155,7 +159,7 @@ function ChatBot() {
     } else if (step === 5) {
       return (
         <div>
-          <p>What is the most important aspect of your plan that you’re looking for? If none of these matter to you beyond Unlimited Talk/Text/Data, select “N/A.”</p>
+          <p>Do you perfer any of the upgrades in each of these categories? If none of these matter to you beyond Unlimited Talk/Text/Data, select “N/A.”</p>
           <div>
             <p>Mobile Hotspot</p>
             <select>
@@ -195,12 +199,71 @@ function ChatBot() {
     } else if (step === 6) {
       return (
         <div>
+          <p>Select all services you are interested in using or currently are subscribed to.</p>
+            <li>
+              <label>
+                <input type="checkbox" value="Verizon Fios Internet" />
+                Verizon Fios Internet
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Apple Music" />
+                Apple Music
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Apple Arcade" />
+                Apple Arcade
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Google Play Pass" />
+                Google Play Pass
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Disney+" />
+                Disney+
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Hulu" />
+                Hulu
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="ESPN+" />
+                ESPN+
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="Apple TV+" />
+                Apple TV+
+              </label>
+            </li>
+          <button onClick={handleNext}>Next</button>
+        </div>
+      );
+    }
+    
+    else if (step === 7) {
+      return (
+        <div>
          <h1>Calculating the best plan fit for you!</h1>
          <PulseLoader color="red" loading={true} size={15} />
       </div>
 
       );
     }
+     
+    
   };
 
   return (
