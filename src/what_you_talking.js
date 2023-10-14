@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './what_you_talking.css'; // Import your CSS file
+import PulseLoader from 'react-spinners/PulseLoader';
+
 
 function ChatBot() {
   const [selectedLines, setSelectedLines] = useState(1);
@@ -20,6 +22,15 @@ function ChatBot() {
       setStep(3);
     } else if (step === 3) {
       setStep(4);
+    } else if (step === 4) {
+      // Handle the transition to the next step (step 5)
+      setStep(5);
+    } else if (step === 5) {
+      // Handle the transition to the next step (step 6)
+      setStep(6);
+    } else if (step === 6) {
+      // Handle the transition to the next step (step 7)
+      setStep(7);
     }
   };
 
@@ -141,17 +152,61 @@ function ChatBot() {
           <button onClick={handleNext}>Next</button>
         </div>
       );
+    } else if (step === 5) {
+      return (
+        <div>
+          <p>What is the most important aspect of your plan that you’re looking for? If none of these matter to you beyond Unlimited Talk/Text/Data, select “N/A.”</p>
+          <div>
+            <p>Mobile Hotspot</p>
+            <select>
+              <option value="5GB">5GB</option>
+              <option value="25GB">25GB</option>
+              <option value="50GB">50GB</option>
+              <option value="No Preference">No Preference / I do not know what this is</option>
+            </select>
+          </div>
+          <div>
+            <p>Cloud Backup</p>
+            <select>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+              <option value="No Preference">No Preference / I do not know what this is</option>
+            </select>
+          </div>
+          <div>
+            <p>Connectivity (5G Ultra Wideband and Premium Network Access)</p>
+            <select>
+              <option value="Yes">Yes (5G Ultra Wideband and Premium Network Access)</option>
+              <option value="No">No (regular Unlimited 4G LTE / 5G)</option>
+              <option value="No Preference">No Preference / I do not know what this is</option>
+            </select>
+          </div>
+          <div>
+            <p>Video Streaming Quality</p>
+            <select>
+              <option value="480p">480p</option>
+              <option value="720p">720p</option>
+              <option value="No Preference">No Preference / I do not know what this is</option>
+            </select>
+          </div>
+          <button onClick={handleNext}>Next</button>
+        </div>
+      );
+    } else if (step === 6) {
+      return (
+        <div>
+         <h1>Calculating the best plan fit for you!</h1>
+         <PulseLoader color="red" loading={true} size={15} />
+      </div>
+
+      );
     }
   };
 
   return (
     <div className="ChatBot">
-      <div className="chat-content">
-        {getScreen()}
-        {step > 1 && (
-          <button onClick={handleBack}>Back</button>
-        )}
-      </div>
+      <div className="chat-content">{getScreen()}</div>
+      {step > 1 && <button onClick={handleBack}>Back</button>}
     </div>
   );
 }
