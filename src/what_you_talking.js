@@ -200,7 +200,6 @@ function ChatBot() {
          <h1>Calculating the best plan fit for you!</h1>
          <PulseLoader color="red" loading={true} size={15} />
       </div>
-
       );
     }
   };

@@ -1,0 +1,4 @@
+openai
+notebook
+jupyter
+langchain
