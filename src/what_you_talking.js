@@ -10,11 +10,8 @@ function ChatBot() {
   const [cellularTablet, setCellularTablet] = useState(0); // Number of Cellular Tablets
 
   const handleClick = () => {
-    if (step < 2) {
-      if (step === 1) {
-        setShowOptions(true);
-      }
-      setStep(step + 1);
+    if (step === 1) {
+      setShowOptions(true);
     } else {
       // Handle next step
       // For example, you can submit the data or navigate to the next step in your application
@@ -26,14 +23,14 @@ function ChatBot() {
   };
 
   const handleNext = () => {
-    if (step < 2) {
-      setStep(step + 1);
+    if (step === 1) {
+      setStep(2);
     }
   };
 
   const handleBack = () => {
-    if (step > 1) {
-      setStep(step - 1);
+    if (step === 2) {
+      setStep(1);
     }
   };
 
