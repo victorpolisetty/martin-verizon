@@ -8,7 +8,7 @@ body {
       rgba(29, 39, 54, 0) 72%
     );
     min-height: 100vh;
-    font-family: 'Nunito', sans-serif; /* Use Montserrat font */
+    font-family: 'Nunito', sans-serif; 
   }
   
   .ChatBot {
@@ -22,7 +22,7 @@ body {
   .chat-content {
     text-align: center;
     padding: 20px;
-    font-family: 'Nunito', sans-serif; /* Use Montserrat font for chat content */
+    font-family: 'Nunito', sans-serif; 
   }
   
   button {
@@ -32,7 +32,7 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-family: 'Nunito', sans-serif; /* Use Montserrat font for the button text */
+    font-family: 'Nunito', sans-serif; 
   }
   
   button:hover {
