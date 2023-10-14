@@ -20,7 +20,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background: radial-gradient(ellipse at bottom right, rgba(255, 0, 0, 0.5), red);
+    background: radial-gradient(ellipse at bottom right, rgba(220, 209, 209, 0.5), red);
   }
   
   .chat-content {
