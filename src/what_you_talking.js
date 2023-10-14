@@ -30,14 +30,16 @@ function ChatBot() {
     if (step === 1) {
       return (
         <div>
-          <h1>Welcome! I am your personal Verizon agent Martin here to help you find the plan to match your needs.</h1>
-          <button onClick={handleNext}>Let's get started</button>
+          <h1>Welcome to Martin </h1>
+          <h2>Verizon's Personalized ChatBot Assistant</h2>
+          <p>We're here to help you find the perfect plan to meet your needs.</p>
+          <button onClick={handleNext}>Let's Get Started</button>
         </div>
       );
     } else if (step === 2) {
       return (
         <div>
-          <p>How many lines would you like to have on your plan?</p>
+          <p>How many lines would you like on your plan?</p>
           <input
             type="range"
             min="1"

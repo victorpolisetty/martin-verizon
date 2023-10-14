@@ -1,14 +1,18 @@
 /* Update your CSS */
 body {
-    margin: 0;
-    padding: 0;
-    background: radial-gradient(
+    /* background: radial-gradient(
       ellipse at bottom right,
       rgba(29, 39, 54, 0.16) 0%,
       rgba(29, 39, 54, 0) 72%
-    );
+    ); */
+    margin: 0;
+    padding: 0;
+    background-image: url('verizon_background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: 'Nunito', sans-serif;
     min-height: 100vh;
-    font-family: 'Nunito', sans-serif; /* Use Montserrat font */
   }
   
   .ChatBot {
