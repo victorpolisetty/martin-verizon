@@ -7,6 +7,7 @@ function ChatBot() {
   const [smartWatch, setSmartWatch] = useState(0);
   const [jetpackHotspot, setJetpackHotspot] = useState(0);
   const [cellularTablet, setCellularTablet] = useState(0);
+  const [userClassification, setUserClassification] = useState(null);
 
   const handleSliderChange = (event) => {
     setSelectedLines(parseInt(event.target.value));
@@ -17,6 +18,8 @@ function ChatBot() {
       setStep(2);
     } else if (step === 2) {
       setStep(3);
+    } else if (step === 3) {
+      setStep(4);
     }
   };
 
@@ -24,6 +27,10 @@ function ChatBot() {
     if (step > 1) {
       setStep(step - 1);
     }
+  };
+
+  const handleUserClassification = (classification) => {
+    setUserClassification(classification);
   };
 
   const getScreen = () => {
@@ -86,6 +93,51 @@ function ChatBot() {
             />
             <span>{cellularTablet}</span>
           </div>
+          <button onClick={handleNext}>Next</button>
+        </div>
+      );
+    } else if (step === 4) {
+      return (
+        <div>
+          <p>Are you classified as any of the following?</p>
+          <ul className="no-bullet-points">
+            <li>
+              <label>
+                <input
+                  type="radio"
+                  name="classification"
+                  value="teacherNurseMilitary"
+                  checked={userClassification === 'teacherNurseMilitary'}
+                  onChange={() => handleUserClassification('teacherNurseMilitary')}
+                />
+                Teacher, Nurse, Military, First Responder
+              </label>
+            </li>
+            <li>
+              <label>
+                <input
+                  type="radio"
+                  name="classification"
+                  value="collegeStudent"
+                  checked={userClassification === 'collegeStudent'}
+                  onChange={() => handleUserClassification('collegeStudent')}
+                />
+                College Student
+              </label>
+            </li>
+            <li>
+              <label>
+                <input
+                  type="radio"
+                  name="classification"
+                  value="no"
+                  checked={userClassification === 'no'}
+                  onChange={() => handleUserClassification('no')}
+                />
+                No
+              </label>
+            </li>
+          </ul>
           <button onClick={handleNext}>Next</button>
         </div>
       );
