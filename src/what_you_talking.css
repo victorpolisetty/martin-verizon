@@ -1,11 +1,41 @@
+/* Update your CSS */
 body {
     margin: 0;
     padding: 0;
     background: radial-gradient(
-        ellipse at bottom right, 
-        rgba(29, 39, 54, 0.16) 0%, 
-        rgba(29, 39, 54, 0) 72%
+      ellipse at bottom right,
+      rgba(29, 39, 54, 0.16) 0%,
+      rgba(29, 39, 54, 0) 72%
     );
     min-height: 100vh;
+    font-family: 'Nunito', sans-serif; /* Use Montserrat font */
+  }
+  
+  .ChatBot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: radial-gradient(ellipse at bottom right, rgba(255, 0, 0, 0.5), red);
+  }
+  
+  .chat-content {
+    text-align: center;
+    padding: 20px;
+    font-family: 'Nunito', sans-serif; /* Use Montserrat font for chat content */
+  }
+  
+  button {
+    background-color: #000000;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif; /* Use Montserrat font for the button text */
+  }
+  
+  button:hover {
+    background-color: #b41b1b;
   }
   
