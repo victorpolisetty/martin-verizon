@@ -124,7 +124,27 @@ app.use(bodyParser.json());
 
 app.post('/chat', async (req, res) => {
     const user_input = req.body.user_input;
+    // user_input map:
+    // keys:
+        // numLines: int (1 to 5)
+        // numSmartWatches: (0 to 5)
+        // numJetpackHotspots: (0 to 5)
+        // numCellularTablets: (0 to 5)
 
+        // qualifyingGroup: string
+        // hotspotAmt: int
+        // cloudBackup: int
+        // connectivity: bool
+        // videoStreaming: int
+
+        // serviceFios: bool
+        // serviceAppleMusic: bool
+        // serviceAppleArcade: bool
+        // serviceGooglePlayPass: bool
+        // serviceDisney: bool
+        // streamingHulu: bool
+        // streamingESPN: bool
+        // streamingAppleTV: bool
     
     // Exit condition
     if (user_input.toLowerCase() === 'exit') {
