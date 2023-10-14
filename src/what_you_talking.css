@@ -22,6 +22,13 @@ body {
     min-height: 100vh;
     font-family: 'Nunito', sans-serif;
   }
+
+  @media (max-width: 768px) {
+    /* Adjust styles for smaller screens here */
+    .chat-message {
+        font-size: 16px;
+      }
+  }
   
   .ChatBot {
     margin: 0;
@@ -31,8 +38,12 @@ body {
     justify-content: center;
     height: 100vh;
     background: radial-gradient(ellipse at center center, rgba(220, 209, 209), rgba(205, 4, 11));
-    /* background-image: url('verizon_background.png'); */
     background-size: cover;
+    @media (max-width: 768px) {
+        /* Adjust layout for smaller screens */
+        padding: 20px;
+        height: auto;
+      }
   }
   
   .chat-content {
@@ -94,5 +105,6 @@ body {
     margin: 5px 0;
     max-width: 70%;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-  }
+    font-size: 18px;
+}
   

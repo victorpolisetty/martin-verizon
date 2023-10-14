@@ -66,7 +66,9 @@ function ChatBot() {
             onChange={handleSliderChange}
           />
           <span>{selectedLines} Line(s)</span>
-          <button onClick={handleNext}>Next</button>
+          <button onClick={handleNext} title="Proceed to the next step">Next</button>
+            {step > 1 && <button onClick={handleBack} 
+            title="Go back to the previous step">Back</button>}
         </div>
       );
     } else if (step === 3) {
@@ -106,7 +108,9 @@ function ChatBot() {
             />
             <span>{cellularTablet}</span>
           </div>
-          <button onClick={handleNext}>Next</button>
+          <button onClick={handleNext} title="Proceed to the next step">Next</button>
+            {step > 1 && <button onClick={handleBack} 
+            title="Go back to the previous step">Back</button>}
         </div>
       );
     } else if (step === 4) {
@@ -151,7 +155,9 @@ function ChatBot() {
               </label>
             </li>
           </ul>
-          <button onClick={handleNext}>Next</button>
+          <button onClick={handleNext} title="Proceed to the next step">Next</button>
+        {step > 1 && <button onClick={handleBack} 
+        title="Go back to the previous step">Back</button>}       
         </div>
       );
     } else if (step === 5) {
@@ -191,7 +197,9 @@ function ChatBot() {
               <option value="No Preference">No Preference / I do not know what this is</option>
             </select>
           </div>
-          <button onClick={handleNext}>Next</button>
+          <button onClick={handleNext} title="Proceed to the next step">Next</button>
+            {step > 1 && <button onClick={handleBack} 
+            title="Go back to the previous step">Back</button>}
         </div>
       );
     } else if (step === 6) {
@@ -199,6 +207,8 @@ function ChatBot() {
         <div>
          <h1>Calculating the best plan fit for you!</h1>
          <PulseLoader color="red" loading={true} size={15} />
+         {step > 1 && <button onClick={handleBack} 
+            title="Go back to the previous step">Back</button>}
       </div>
       );
     }
@@ -207,7 +217,6 @@ function ChatBot() {
   return (
     <div className="ChatBot">
       <div className="chat-content">{getScreen()}</div>
-      {step > 1 && <button onClick={handleBack}>Back</button>}
     </div>
   );
 }
