@@ -1,25 +1,43 @@
 /* Updated CSS */
 body {
-    margin: 0;
-    padding: 0;
-    background: radial-gradient(
+    /* background: radial-gradient(
       ellipse at bottom right,
       rgba(29, 39, 54, 0.16) 0%,
       rgba(29, 39, 54, 0) 72%
-    );
+    ); */ 
+    /* /* margin: 0;
+    padding: 0;
+    background-image: url('verizon_background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    min-height: 100vh; */
+    margin: 0;
+    padding: 0;
+  }
+
+  .chat-styles{
+    text-align: center;
     min-height: 100vh;
     font-family: 'Nunito', sans-serif;
   }
   
   .ChatBot {
+    margin: 0;
+    padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background: radial-gradient(ellipse at bottom right, rgba(220, 209, 209, 0.5), red);
+    background: radial-gradient(ellipse at center center, rgba(220, 209, 209), rgba(205, 4, 11));
+    /* background-image: url('verizon_background.png'); */
+    background-size: cover;
   }
   
   .chat-content {
+    position: relative;
+    display: flex;
     text-align: center;
     padding: 20px;
     font-family: 'Nunito', sans-serif;

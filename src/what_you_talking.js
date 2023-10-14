@@ -140,52 +140,157 @@ function ChatBot() {
             </div>
             <div className="chat-box">
               <p className="chat-message">Do you fall under any of the following?</p>
-              <ul className="no-bullet-points">
-                <li>
-                  <label>
-                    <input
-                      type="radio"
-                      name="classification"
-                      value="teacherNurseMilitary"
-                      checked={userClassification === 'teacherNurseMilitary'}
-                      onChange={() => handleUserClassification('teacherNurseMilitary')}
-                    />
-                    Teacher, Nurse, Military, First Responder
-                  </label>
-                </li>
-                <li>
-                  <label>
-                    <input
-                      type="radio"
-                      name="classification"
-                      value="collegeStudent"
-                      checked={userClassification === 'collegeStudent'}
-                      onChange={() => handleUserClassification('collegeStudent')}
-                    />
-                    College Student
-                  </label>
-                </li>
-                <li>
-                  <label>
-                    <input
-                      type="radio"
-                      name="classification"
-                      value="no"
-                      checked={userClassification === 'no'}
-                      onChange={() => handleUserClassification('no')}
-                    />
-                    No
-                  </label>
-                </li>
-              </ul>
+              <li>
+                <label>
+                  <input
+                    type="radio"
+                    name="classification"
+                    value="teacherNurseMilitary"
+                    checked={userClassification === 'teacherNurseMilitary'}
+                    onChange={() => handleUserClassification('teacherNurseMilitary')}
+                  />
+                  Teacher, Nurse, Military, First Responder
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input
+                    type="radio"
+                    name="classification"
+                    value="collegeStudent"
+                    checked={userClassification === 'collegeStudent'}
+                    onChange={() => handleUserClassification('collegeStudent')}
+                  />
+                  College Student
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input
+                    type="radio"
+                    name="classification"
+                    value="no"
+                    checked={userClassification === 'no'}
+                    onChange={() => handleUserClassification('no')}
+                  />
+                  No
+                </label>
+              </li>
               <button onClick={handleNext}>Next</button>
             </div>
           </div>
         </div>
       );
-    }
-    // Add similar blocks for other steps
-    else if (step === 7) {
+    } else if (step === 5) {
+      return (
+        <div>
+          <div className="chat-container">
+            <div className="avatar-container">
+              <img src={avatar} alt="Avatar" className="avatar" />
+            </div>
+            <div className="chat-box">
+              <p className="chat-message">Do you prefer any of the upgrades in each of these categories? If none of these matter to you beyond Unlimited Talk/Text/Data, select “N/A.”</p>
+              <div>
+                <p>Mobile Hotspot</p>
+                <select>
+                  <option value="5GB">5GB</option>
+                  <option value="25GB">25GB</option>
+                  <option value="50GB">50GB</option>
+                  <option value="No Preference">No Preference / I do not know what this is</option>
+                </select>
+              </div>
+              <div>
+                <p>Cloud Backup</p>
+                <select>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                  <option value="No Preference">No Preference / I do not know what this is</option>
+                </select>
+              </div>
+              <div>
+                <p>Connectivity (5G Ultra Wideband and Premium Network Access)</p>
+                <select>
+                  <option value="Yes">Yes (5G Ultra Wideband and Premium Network Access)</option>
+                  <option value="No">No (regular Unlimited 4G LTE / 5G)</option>
+                  <option value="No Preference">No Preference / I do not know what this is</option>
+                </select>
+              </div>
+              <div>
+                <p>Video Streaming Quality</p>
+                <select>
+                  <option value="480p">480p</option>
+                  <option value="720p">720p</option>
+                  <option value="No Preference">No Preference / I do not know what this is</option>
+                </select>
+              </div>
+              <button onClick={handleNext}>Next</button>
+            </div>
+          </div>
+        </div>
+      );
+    } else if (step === 6) {
+      return (
+        <div>
+          <div className="chat-container">
+            <div className="avatar-container">
+              <img src={avatar} alt="Avatar" className="avatar" />
+            </div>
+            <div className="chat-box">
+              <p className="chat-message">Select all services you are interested in using or currently are subscribed to.</p>
+              <li>
+                <label>
+                  <input type="checkbox" value="Verizon Fios Internet" />
+                  Verizon Fios Internet
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" value="Apple Music" />
+                  Apple Music
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" value="Apple Arcade" />
+                  Apple Arcade
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" value="Google Play Pass" />
+                  Google Play Pass
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" value="Disney+" />
+                  Disney+
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" value="Hulu" />
+                  Hulu
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" value="ESPN+" />
+                  ESPN+
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" value="Apple TV+" />
+                  Apple TV+
+                </label>
+              </li>
+              <button onClick={handleNext}>Next</button>
+            </div>
+          </div>
+        </div>
+      );
+    } else if (step === 7) {
       return (
         <div>
           <div className="chat-container">
