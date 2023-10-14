@@ -1,0 +1,11 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(
+        ellipse at bottom right, 
+        rgba(29, 39, 54, 0.16) 0%, 
+        rgba(29, 39, 54, 0) 72%
+    );
+    min-height: 100vh;
+  }
+  
