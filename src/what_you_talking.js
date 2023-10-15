@@ -4,6 +4,11 @@ import PulseLoader from 'react-spinners/PulseLoader';
 import avatar from './avatar.png'; // Import the avatar image
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import FormGroup from '@mui/material/FormGroup'; // Import FormGroup from Material-UI
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 function ChatBot() {
@@ -12,10 +17,10 @@ function ChatBot() {
   const [jetpackHotspot, setJetpackHotspot] = useState(0);
   const [cellularTablet, setCellularTablet] = useState(0);
   const [userClassification, setUserClassification] = useState(null);
-  const [mobileHotspot, setMobileHotspot] = useState("No Preference");
-  const [cloudBackup, setCloudBackup] = useState("No Preference");
-  const [connectivity, setConnectivity] = useState("No Preference");
-  const [videoStreamingQuality, setVideoStreamingQuality] = useState("No Preference");
+  const [mobileHotspot, setMobileHotspot] = useState('');
+  const [cloudBackup, setCloudBackup] = useState('');
+  const [connectivity, setConnectivity] = useState('');
+  const [videoStreamingQuality, setVideoStreamingQuality] = useState('');
   const [selectedServices, setSelectedServices] = useState({
     "Verizon Fios Internet": false,
     "Apple Music": false,
@@ -102,8 +107,7 @@ function ChatBot() {
   useEffect(() => {
     if (step > 1 && step < 7) { // Only start the loader from step 3 onwards
       setLoading(true);
-      // const randomDelay = Math.random() * 1500 + 500;
-      const randomDelay = 1;
+      const randomDelay = Math.random() * 1500 + 500;
       const timeout = setTimeout(() => {
         setLoading(false);
       }, randomDelay); // 1.5 seconds
@@ -167,6 +171,9 @@ function ChatBot() {
     }));
   };
   
+  const handleSelectChange = (e, stateSetter) => {
+    stateSetter(e.target.value);
+  };
 
   const fetchPlans = async () => {
     setLoading(true);
@@ -221,6 +228,7 @@ function ChatBot() {
       return (
         <div className="chat-box">
           <p className="chat-message"><em>I'm processing something... please wait.</em></p>
+          <br />
           <PulseLoader color="red" loading={true} size={15} />
         </div>
       );
@@ -237,12 +245,16 @@ function ChatBot() {
       return (
         <div className="chat-box">
           <p className="chat-message">{typedMessage}</p>
+          <br />
+
           <input
             type="range"
             min="1"
             max="5"
             value={selectedLines}
             onChange={handleSliderChange}
+            className="slider" // Add the 'slider' class here
+
           />
           {selectedLines < 5 && <span>{selectedLines} Line(s)</span>}
           {selectedLines === 5 && <span>{selectedLines}+ Line(s)</span>}
@@ -269,6 +281,8 @@ function ChatBot() {
               max="5"
               value={smartWatch}
               onChange={(e) => setSmartWatch(parseInt(e.target.value))}
+              className="slider2" // Add the 'slider' class here
+
             />
             <span>{smartWatch}</span>
           </div>
@@ -280,6 +294,8 @@ function ChatBot() {
               max="5"
               value={jetpackHotspot}
               onChange={(e) => setJetpackHotspot(parseInt(e.target.value))}
+              className="slider2" // Add the 'slider' class here
+
             />
             <span>{jetpackHotspot}</span>
           </div>
@@ -291,6 +307,8 @@ function ChatBot() {
               max="5"
               value={cellularTablet}
               onChange={(e) => setCellularTablet(parseInt(e.target.value))}
+              className="slider2" // Add the 'slider' class here
+
             />
             <span>{cellularTablet}</span>
           </div>
@@ -358,40 +376,61 @@ function ChatBot() {
       return (
         <div className="chat-box">
           <p className="chat-message">{typedMessage}</p>
-          <div>
-            <p>Mobile Hotspot</p>
-            <select value={mobileHotspot} onChange={e => setMobileHotspot(e.target.value)}>
-              <option value="5GB">5GB</option>
-              <option value="25GB">25GB</option>
-              <option value="50GB">50GB</option>
-              <option value="No Preference">No Preference / I do not know what this is</option>
-            </select>
-          </div>
-          <div>
-            <p>Cloud Backup</p>
-            <select value={cloudBackup} onChange={e => setCloudBackup(e.target.value)}>
-              <option value="Yes">Yes</option>
-              <option value="No">No</option>
-              <option value="No Preference">No Preference / I do not know what this is</option>
-            </select>
-          </div>
-          <div>
-            <p>Connectivity</p>
-            <select value={connectivity} onChange={e => setConnectivity(e.target.value)}>
-              <option value="Yes">Yes (5G Ultra Wideband and Premium Network Access)</option>
-              <option value="No">No (regular Unlimited 4G LTE / 5G)</option>
-              <option value="No Preference">No Preference / I do not know what this is</option>
-            </select>
-          </div>
-          <div>
-            <p>Video Streaming Quality</p>
-            <select value={videoStreamingQuality} onChange={e => setVideoStreamingQuality(e.target.value)}>
-              <option value="480p">480p</option>
-              <option value="720p">720p</option>
-              <option value="No Preference">No Preference / I do not know what this is</option>
-            </select>
-          </div>
-            <div className="button-container">
+          <br />
+          <FormControl fullWidth>
+  <InputLabel style={{ marginTop: '-8px' }}>Mobile Hotspot</InputLabel>
+  <Select
+    value={mobileHotspot}
+    onChange={(e) => handleSelectChange(e, setMobileHotspot)}
+  >
+    <MenuItem value="5GB">5GB</MenuItem>
+    <MenuItem value="25GB">25GB</MenuItem>
+    <MenuItem value="50GB">50GB</MenuItem>
+    <MenuItem value="No Preference">No Preference / I do not know what this is</MenuItem>
+  </Select>
+</FormControl>
+<br />
+
+<FormControl fullWidth>
+  <InputLabel style={{ marginTop: '-8px' }}>Cloud Backup</InputLabel>
+  <Select
+    value={cloudBackup}
+    onChange={(e) => handleSelectChange(e, setCloudBackup)}
+  >
+    <MenuItem value="Yes">Yes</MenuItem>
+    <MenuItem value="No">No</MenuItem>
+    <MenuItem value="No Preference">No Preference / I do not know what this is</MenuItem>
+  </Select>
+</FormControl>
+<br />
+
+<FormControl fullWidth>
+  <InputLabel style={{ marginTop: '-8px' }}>Connectivity</InputLabel>
+  <Select
+    value={connectivity}
+    onChange={(e) => handleSelectChange(e, setConnectivity)}
+  >
+    <MenuItem value="Yes">Yes (5G Ultra Wideband and Premium Network Access)</MenuItem>
+    <MenuItem value="No">No (regular Unlimited 4G LTE / 5G)</MenuItem>
+    <MenuItem value="No Preference">No Preference / I do not know what this is</MenuItem>
+  </Select>
+</FormControl>
+<br />
+
+<FormControl fullWidth>
+  <InputLabel style={{ marginTop: '-8px' }}>Video Streaming Quality</InputLabel>
+  <Select
+    value={videoStreamingQuality}
+    onChange={(e) => handleSelectChange(e, setVideoStreamingQuality)}
+  >
+    <MenuItem value="480p">480p</MenuItem>
+    <MenuItem value="720p">720p</MenuItem>
+    <MenuItem value="No Preference">No Preference / I do not know what this is</MenuItem>
+  </Select>
+</FormControl>
+<br />
+
+        <div className="button-container">
                 <button onClick={handleBack} className="small-button">
                     <i className="fas fa-arrow-left"></i> Back
                 </button>
@@ -401,91 +440,89 @@ function ChatBot() {
             </div>
         </div>
       );
-    } else if (step === 6) {
+    }
+    else if (step === 6) {
       return (
         <div className="chat-box">
           <p className="chat-message">{typedMessage}</p>
-          <label>
-            <input
-              type="checkbox"
-              value="Verizon Fios Internet"
-              checked={selectedServices["Verizon Fios Internet"]}
-              onChange={handleServiceChange}
-            />
-            Verizon Fios Internet
-          </label>
+          <FormControl fullWidth>
 
-          <label>
-            <input
-              type="checkbox"
-              value="Apple Music"
-              checked={selectedServices["Apple Music"]}
-              onChange={handleServiceChange}
-            />
-            Apple Music
-          </label>
-
-          <label>
-            <input
-              type="checkbox"
-              value="Apple Arcade"
-              checked={selectedServices["Apple Arcade"]}
-              onChange={handleServiceChange}
-            />
-            Apple Arcade
-          </label>
-
-          <label>
-            <input
-              type="checkbox"
-              value="Google Play Pass"
-              checked={selectedServices["Google Play Pass"]}
-              onChange={handleServiceChange}
-            />
-            Google Play Pass
-          </label>
-
-          <label>
-            <input
-              type="checkbox"
-              value="Disney+"
-              checked={selectedServices["Disney+"]}
-              onChange={handleServiceChange}
-            />
-            Disney+
-          </label>
-
-          <label>
-            <input
-              type="checkbox"
-              value="Hulu"
-              checked={selectedServices["Hulu"]}
-              onChange={handleServiceChange}
-            />
-            Hulu
-          </label>
-
-          <label>
-            <input
-              type="checkbox"
-              value="ESPN+"
-              checked={selectedServices["ESPN+"]}
-              onChange={handleServiceChange}
-            />
-            ESPN+
-          </label>
-
-          <label>
-            <input
-              type="checkbox"
-              value="Apple TV+"
-              checked={selectedServices["Apple TV+"]}
-              onChange={handleServiceChange}
-            />
-            Apple TV+
-          </label>
-
-          <div className="button-container">
+            <FormGroup>
+              <FormControlLabel
+                control={<Checkbox
+                  checked={selectedServices["Verizon Fios Internet"]}
+                  onChange={handleServiceChange}
+                  value="Verizon Fios Internet"
+                  style={{ padding: '8px' }}
+                />}
+                label="Verizon Fios Internet"
+              />
+              <FormControlLabel
+                control={<Checkbox
+                  checked={selectedServices["Apple Music"]}
+                  onChange={handleServiceChange}
+                  value="Apple Music"
+                  style={{ padding: '8px' }}
+                />}
+                label="Apple Music"
+              />
+              <FormControlLabel
+                control={<Checkbox
+                  checked={selectedServices["Apple Arcade"]}
+                  onChange={handleServiceChange}
+                  value="Apple Arcade"
+                  style={{ padding: '8px' }}
+                />}
+                label="Apple Arcade"
+              />
+              <FormControlLabel
+                control={<Checkbox
+                  checked={selectedServices["Google Play Pass"]}
+                  onChange={handleServiceChange}
+                  value="Google Play Pass"
+                  style={{ padding: '8px' }}
+                />}
+                label="Google Play Pass"
+              />
+              <FormControlLabel
+                control={<Checkbox
+                  checked={selectedServices["Disney+"]}
+                  onChange={handleServiceChange}
+                  value="Disney+"
+                  style={{ padding: '8px' }}
+                />}
+                label="Disney+"
+              />
+              <FormControlLabel
+                control={<Checkbox
+                  checked={selectedServices["Hulu"]}
+                  onChange={handleServiceChange}
+                  value="Hulu"
+                  style={{ padding: '8px' }}
+                />}
+                label="Hulu"
+              />
+              <FormControlLabel
+                control={<Checkbox
+                  checked={selectedServices["ESPN+"]}
+                  onChange={handleServiceChange}
+                  value="ESPN+"
+                  style={{ padding: '8px' }}
+                />}
+                label="ESPN+"
+              />
+              <FormControlLabel
+                control={<Checkbox
+                  checked={selectedServices["Apple TV+"]}
+                  onChange={handleServiceChange}
+                  value="Apple TV+"
+                  style={{ padding: '8px' }}
+                />}
+                label="Apple TV+"
+              />
+            </FormGroup>
+          </FormControl>
+           <div className="button-container">
                 <button onClick={handleBack} className="small-button">
                     <i className="fas fa-arrow-left"></i> Back
                 </button>
@@ -495,10 +532,12 @@ function ChatBot() {
             </div>
         </div>
       );
-    } else if (step === 7) {
+    }
+     else if (step === 7) {
       return (
         <div className="chat-box">
           <p className="chat-message"><em>{typedMessage}</em></p>
+          <br />
           <PulseLoader color="red" loading={true} size={15} />
         </div>
       );

@@ -3,14 +3,19 @@ const axios = require('axios');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-
 const app = express();
 app.use(cors());
 
-
 const PORT = 3000;
 const OPENAI_API_URL = 'https://api.openai.com/v1/chat/completions'; // This is for GPT-3, ensure you have the correct endpoint for GPT-4.
-const API_KEY = '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';
+const API_KEY_NAME = 'API_KEY';
+const API_KEY = process.env[API_KEY_NAME];
+
+if (process.env[API_KEY_NAME] !== undefined) {
+  console.log(`The value of ${API_KEY_NAME} is: ${API_KEY}`);
+} else {
+  console.log(`The environment variable ${API_KEY_NAME} does not exist.`);
+}
 
 const conversation = [
     {
