@@ -65,7 +65,7 @@ function ChatBot() {
   }, [step]);
 
   useEffect(() => {
-    if (!loading && step > 1) {
+    if (step === 7 || (!loading && step > 1)) {
       setTypedMessage("");
         let currentMessage = "";
         switch (step) {
@@ -98,7 +98,8 @@ function ChatBot() {
   useEffect(() => {
     if (step > 1 && step < 7) { // Only start the loader from step 3 onwards
       setLoading(true);
-      const randomDelay = Math.random() * 1500 + 500;
+      // const randomDelay = Math.random() * 1500 + 500;
+      const randomDelay = 1;
       const timeout = setTimeout(() => {
         setLoading(false);
       }, randomDelay); // 1.5 seconds
@@ -108,6 +109,7 @@ function ChatBot() {
       const getPlansAndProceed = async () => {
           try {
             console.log("chatgpt called")
+            // console.log(step); // 7
               await fetchPlans(); // Assuming fetchPlans returns a Promise
               setStep(8);  // Move to the next step after fetchPlans completes
           } catch (error) {
@@ -165,7 +167,7 @@ function ChatBot() {
   const fetchPlans = async () => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:3000/chat', {
+      const response = await fetch('http://localhost:5000/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

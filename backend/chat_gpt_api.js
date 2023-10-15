@@ -114,7 +114,7 @@ const conversation = [
     },
     {
         role: "assistant",
-        content: `Important Clarifications:For example, having 3 lines means I will be charged the 3L rate per month.If there is/are connected device(s), the Connected Device Discount for the plan must apply. Remember to apply the connected device discount for the corresponding plan. If I have a connected device, which includes Smart Watches, Jetpack Hotspots, and Cellular Tablets. Then I should get 50% off the price of each of these devices if I am trying to purchase the 5G Do More, 5G Get More, or Apple One Unlimited. To properly format the content with breaks and bolding, you'd want to use a combination of HTML tags such as <br> for line breaks, <strong> or <b> for bold text, and <ul>/<li> for lists. I would like the text to be formatted as such in HTML. Make the output so that it will be formatted correctly inside a <p> tag. Use bold <b> tags for anything important.`
+        content: `For example, having 3 lines means I will be charged the 3L rate per month.If there is/are connected device(s), the Connected Device Discount for the plan must apply. Remember to apply the connected device discount for the corresponding plan. If I have a connected device, which includes Smart Watches, Jetpack Hotspots, and Cellular Tablets. Then I should get 50% off the price of each of these devices if I am trying to purchase the 5G Do More, 5G Get More, or Apple One Unlimited. To properly format the content with breaks and bolding, you'd want to use a combination of HTML tags such as <br> for line breaks and <ul>/<li> for lists. I would like the text to be formatted as such in HTML. Make the output so that it will be formatted correctly inside a <p> tag. Do not use <b> or <strong> tags`
     }
 ];
 
@@ -219,5 +219,5 @@ app.post('/chat', async (req, res) => {
     }
 });
 
-app.listen(3000);
+app.listen(5000);
 
