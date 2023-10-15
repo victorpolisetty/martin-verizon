@@ -5,22 +5,22 @@ outline: 1px solid red;
 body {
     margin: 0;
     padding: 0;
-  }
+}
 
-  .chat-styles{
+.chat-styles {
     text-align: center;
     min-height: 100vh;
-    font-family: 'Nunito', sans-serif;
-  }
+    font-family: 'Montserrat', sans-serif;
+}
 
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
     /* Adjust styles for smaller screens here */
     .chat-message {
         font-size: 16px;
-      }
-  }
-  
-  .ChatBot {
+    }
+}
+
+.ChatBot {
     margin: 0;
     padding: 0;
     display: flex;
@@ -33,53 +33,58 @@ body {
         /* Adjust layout for smaller screens */
         padding: 20px;
         height: auto;
-      }
-  }
-  
-  .chat-content {
+    }
+}
+
+.chat-content {
     position: relative;
     display: flex;
     text-align: left;
     max-width: 60%;
     padding: 20px;
-    font-family: 'Nunito', sans-serif;
-  }
-  
-  button {
+    font-family: 'Montserrat', sans-serif;
+}
+
+button {
     background-color: #ff5722; /* Choose your desired button color */
     color: #fff;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     transition: background-color 0.3s; /* Add a smooth transition effect */
     max-width: 200px; /* Set a maximum width */
     display: inline-block; /* Makes the button inline */
     margin-top: 10px;
-  }
-  
-  button:hover {
-    background-color: #b41b1b; /* Change the color on hover */
-  }
+}
 
-  .small-button {
+button:hover {
+    background-color: #b41b1b; /* Change the color on hover */
+}
+
+.small-button {
     background-color: #ff5722;
     color: #fff;
     padding: 5px 10px; /* Adjust the padding to change button size */
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     transition: background-color 0.3s;
-  }
+}
 
-  .small-button:hover {
+.small-button:hover {
     background-color: #e64a19;
-  }
-  
-  /* Styles for chat container, avatar, and chat box */
-  .chat-container {
+}
+
+/* Adjust the space between radio dots and the start of the words */
+input[type="radio"] {
+    margin-right: 10px; /* Adjust the amount of space as needed */
+}
+
+/* Styles for chat container, avatar, and chat box */
+.chat-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between; /* Align buttons on opposite sides */
@@ -91,19 +96,19 @@ body {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     box-sizing: border-box;
-  }
-  
-  .avatar-container {
+}
+
+.avatar-container {
     margin-right: 20px;
-  }
-  
-  .avatar-container img {
+}
+
+.avatar-container img {
     max-width: 60px;
     height: auto;
     border-radius: 30%;
-  }
-  
-  .chat-box {
+}
+
+.chat-box {
     width: 50vw;  /* 50% of the viewport width */
     height: 70vh; /* 70% of the viewport height */
     display: flex;
@@ -111,10 +116,10 @@ body {
     align-items: flex-start;
     justify-content: flex-start;
     overflow: auto; /* To handle potential overflow of content */
-  }
-  
-  /* Styles for chat messages */
-  .chat-message {
+}
+
+/* Styles for chat messages */
+.chat-message {
     background-color: #ffffff;
     padding: 10px 15px;
     border-radius: 15px;
@@ -123,4 +128,3 @@ body {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
     font-size: 18px;
 }
-  
