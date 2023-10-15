@@ -132,7 +132,7 @@ function ChatBot() {
       return (
         <div className="chat-box">
           <p className="chat-message">{typedMessage}</p>
-          <button onClick={handleNext}>Let's get started</button>
+          <button onClick={handleNext} className="small-button">Let's get started</button>
         </div>
       );
     } else if (step === 2) {

@@ -39,7 +39,7 @@ outline: 1px solid red;
   .chat-content {
     position: relative;
     display: flex;
-    text-align: center;
+    text-align: left;
     max-width: 60%;
     padding: 20px;
     font-family: 'Nunito', sans-serif;
@@ -88,7 +88,6 @@ outline: 1px solid red;
     align-items: flex-start;
     padding: 20px;
     border-radius: 10px;
-    max-width: 80%;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     box-sizing: border-box;
@@ -112,7 +111,7 @@ outline: 1px solid red;
     align-items: flex-start;
     justify-content: flex-start;
     overflow: auto; /* To handle potential overflow of content */
-    }
+  }
   
   /* Styles for chat messages */
   .chat-message {
