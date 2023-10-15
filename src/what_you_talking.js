@@ -228,6 +228,7 @@ function ChatBot() {
       return (
         <div className="chat-box">
           <p className="chat-message"><em>I'm processing something... please wait.</em></p>
+          <br />
           <PulseLoader color="red" loading={true} size={15} />
         </div>
       );
@@ -250,6 +251,8 @@ function ChatBot() {
             max="5"
             value={selectedLines}
             onChange={handleSliderChange}
+            className="slider" // Add the 'slider' class here
+
           />
           {selectedLines < 5 && <span>{selectedLines} Line(s)</span>}
           {selectedLines === 5 && <span>{selectedLines}+ Line(s)</span>}
@@ -273,6 +276,8 @@ function ChatBot() {
               max="5"
               value={smartWatch}
               onChange={(e) => setSmartWatch(parseInt(e.target.value))}
+              className="slider2" // Add the 'slider' class here
+
             />
             <span>{smartWatch}</span>
           </div>
@@ -284,6 +289,8 @@ function ChatBot() {
               max="5"
               value={jetpackHotspot}
               onChange={(e) => setJetpackHotspot(parseInt(e.target.value))}
+              className="slider2" // Add the 'slider' class here
+
             />
             <span>{jetpackHotspot}</span>
           </div>
@@ -295,6 +302,8 @@ function ChatBot() {
               max="5"
               value={cellularTablet}
               onChange={(e) => setCellularTablet(parseInt(e.target.value))}
+              className="slider2" // Add the 'slider' class here
+
             />
             <span>{cellularTablet}</span>
           </div>
@@ -519,6 +528,7 @@ function ChatBot() {
       return (
         <div className="chat-box">
           <p className="chat-message"><em>{typedMessage}</em></p>
+          <br />
           <PulseLoader color="red" loading={true} size={15} />
         </div>
       );

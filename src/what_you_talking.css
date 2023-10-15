@@ -156,3 +156,10 @@ input[type="radio"] {
     font-size: 18px;
 }
 
+.slider {
+    width: 35%; /* Adjust the width as needed */
+  }
+  
+  .slider2 {
+    width: 175%; /* Adjust the width as needed */
+  }
