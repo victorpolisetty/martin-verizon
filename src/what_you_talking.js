@@ -62,34 +62,39 @@ function ChatBot() {
 
   const getScreen = () => {
     if (loading) {
-      return (
-        <div className="chat-box">
-          <p className="chat-message"><em>I'm processing something... please wait.</em></p>
-          <PulseLoader color="red" loading={true} size={15} />
-        </div>
+        return (
+            <div className="chat-box">
+              <p className="chat-message"><em>I'm processing something... please wait.</em></p>
+              <PulseLoader color="red" loading={true} size={15} />
+            </div>
       );
     } else if (step === 1) {
-      return (
-        <div className="chat-box">
-          <p className="chat-message">Welcome! My name is Martin, and I'm going to ask you some questions to help you decide on a Verizon Unlimited phone plan.</p>
-          <button onClick={handleNext}>Let's get started</button>
-        </div>
-      );
+        return (
+          <div className="chat-box">
+            <p className="chat-message">Welcome! My name is Martin, and I'm going to ask you some questions to help you decide on a Verizon Unlimited phone plan.</p>
+            <button onClick={handleNext}>Let's get started</button>
+          </div>
+        );
     } else if (step === 2) {
       return (
-        <div className="chat-box">
-          <p className="chat-message">Let's learn more about what you want! How many lines would you like to have on your plan?</p>
-          <input
-            type="range"
-            min="1"
-            max="5"
-            value={selectedLines}
-            onChange={handleSliderChange}
-          />
-          {selectedLines < 5 && <span>{selectedLines} Line(s)</span>}
-          {selectedLines === 5 && <span>{selectedLines}+ Line(s)</span>}
-          <button onClick={handleNext}>Next</button>
-        </div>
+            <div className="chat-box">
+              <p className="chat-message">Let's learn more about what you want! How many lines would you like to have on your plan?</p>
+              <input
+                type="range"
+                min="1"
+                max="5"
+                value={selectedLines}
+                onChange={handleSliderChange}
+              />
+              {selectedLines < 5 && <span>{selectedLines} Line(s)</span>}
+              {selectedLines === 5 && <span>{selectedLines}+ Line(s)</span>}
+              <button onClick={handleNext} title="Proceed to the next step" className="small-button">
+                Next <i className="fas fa-arrow-right"></i></button>
+                {step > 1 && (<button onClick={handleBack} 
+                title="Go back to the previous step" className="small-button">
+                <i className="fas fa-arrow-left"></i> Back 
+              </button>)}
+            </div>
       );
     } else if (step === 3) {
       return (
@@ -128,7 +133,12 @@ function ChatBot() {
             />
             <span>{cellularTablet}</span>
           </div>
-          <button onClick={handleNext}>Next</button>
+          <button onClick={handleNext} title="Proceed to the next step" className="small-button">
+            Next <i className="fas fa-arrow-right"></i></button>
+            {step > 1 && (<button onClick={handleBack} 
+            title="Go back to the previous step" className="small-button">
+            <i className="fas fa-arrow-left"></i> Back 
+          </button>)}
         </div>
       );
     } else if (step === 4) {
@@ -165,7 +175,12 @@ function ChatBot() {
               />
               No
             </label>
-          <button onClick={handleNext}>Next</button>
+            <button onClick={handleNext} title="Proceed to the next step">
+                Next <i className="fas fa-arrow-right"></i></button>
+                {step > 1 && <button onClick={handleBack} 
+                title="Go back to the previous step">
+                <i className="fas fa-arrow-left"></i> Back
+            </button>}
         </div>
       );
     } else if (step === 5) {
@@ -205,7 +220,12 @@ function ChatBot() {
               <option value="No Preference">No Preference / I do not know what this is</option>
             </select>
           </div>
-          <button onClick={handleNext}>Next</button>
+            <button onClick={handleNext} title="Proceed to the next step">
+                Next <i className="fas fa-arrow-right"></i></button>
+                {step > 1 && <button onClick={handleBack} 
+                title="Go back to the previous step">
+                <i className="fas fa-arrow-left"></i> Back
+            </button>}
         </div>
       );
     } else if (step === 6) {
@@ -244,7 +264,12 @@ function ChatBot() {
               <input type="checkbox" value="Apple TV+" />
               Apple TV+
             </label>
-          <button onClick={handleNext}>Next</button>
+            <button onClick={handleNext} title="Proceed to the next step">
+                Next <i className="fas fa-arrow-right"></i></button>
+                {step > 1 && step < 7 && <button onClick={handleBack} 
+                title="Go back to the previous step">
+                <i className="fas fa-arrow-left"></i> Back
+            </button>}
         </div>
       );
     } else if (step === 7) {
@@ -265,7 +290,6 @@ function ChatBot() {
             <img src={avatar} alt="Avatar" className="avatar" />
           </div>
           {getScreen()}
-          {step > 1 && <button onClick={handleBack}>Back</button>}
         </div>
       </div>
     </div>
