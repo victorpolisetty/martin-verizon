@@ -6,25 +6,39 @@ Created for UF AI Days Gator Hack (Sponsored by Verizon)
 
 https://devpost.com/software/kim-s-convenience
 
-## Install
+## Installation and Local Deployment
 
-Please contact zhang.jonathan@ufl.edu to be provided access to our authentication key for the OpenAI API.
+Please contact `zhang.jonathan@ufl.edu` to be provided access to our authentication key for the OpenAI API.
 
-Step 0: Download requirements
+**Step 0:** Download requirements.
 
-Step 1: clone repo
+- Node.js
+- npm
+- Python 3
 
-Step 2: npm install (to get necessary requirements)
+**Step 1:** Clone the repository.
 
--> Potential missing packages
-- Cors: npm install cors
-- OpenAI: pip install openai
+`git clone https://github.com/victorpolisetty/martin-verizon.git`
 
-Step 3: Start the backend server using: node backend/chat_gpt_api.js
+**Step 2:** Install requirements.
 
-Step 4: Start the Frontend web app using: npm start (it may ask to switch ports, click YES)
+`npm install`
 
-Step 5: Open up the react web app on "localhost:3001" in any browser
+Potential missing packages
+- Cors: `npm install cors`
+- OpenAI: `pip install openai`
+
+**Step 3:** Start the backend server.
+
+`export API_KEY="INSERT_AUTHENTICATION_KEY_HERE"`
+
+`node backend/chat_gpt_api.js`
+
+**Step 4:** Start the frontend web app in a new terminal. It may ask to switch ports, click YES.
+
+`npm start`
+
+**Step 5:**  Access the React web app on the provided localhost link in a Chrome-based browser.
 
 ## Appendix
 
