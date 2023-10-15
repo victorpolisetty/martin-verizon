@@ -81,7 +81,7 @@ body {
   .avatar-container img {
     max-width: 60px;
     height: auto;
-    border-radius: 50%;
+    border-radius: 30%;
   }
   
   .chat-box {
@@ -96,7 +96,6 @@ body {
     padding: 10px 15px;
     border-radius: 15px;
     margin: 5px 0;
-    max-width: 70%;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   }
   
