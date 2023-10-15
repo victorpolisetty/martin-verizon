@@ -228,7 +228,9 @@ function ChatBot() {
       return (
         <div className="chat-box">
           <p className="chat-message">{typedMessage}</p>
-          <button onClick={handleNext} className="small-button">Let's get started</button>
+          <div className="button-container">
+            <button onClick={handleNext} className="start-button">Let's get started</button>
+          </div>
         </div>
       );
     } else if (step === 2) {
@@ -244,12 +246,15 @@ function ChatBot() {
           />
           {selectedLines < 5 && <span>{selectedLines} Line(s)</span>}
           {selectedLines === 5 && <span>{selectedLines}+ Line(s)</span>}
-          <button onClick={handleNext} title="Proceed to the next step" className="small-button">
-            Next <i className="fas fa-arrow-right"></i></button>
-            {step > 1 && !loading && (<button onClick={handleBack} 
-            title="Go back to the previous step" className="small-button">
-            <i className="fas fa-arrow-left"></i> Back 
-          </button>)}
+            <div className="button-container">
+                {/* <button onClick={handleBack} className="small-button">
+                    <i className="fas fa-arrow-left"></i> Back
+                </button> */}
+                <button onClick={handleNext} className="small-button">
+                    Next <i className="fas fa-arrow-right"></i>
+                </button>
+            </div>
+
         </div>
       );
     } else if (step === 3) {
@@ -289,12 +294,14 @@ function ChatBot() {
             />
             <span>{cellularTablet}</span>
           </div>
-          <button onClick={handleNext} title="Proceed to the next step" className="small-button">
-            Next <i className="fas fa-arrow-right"></i></button>
-            {step > 1 && (<button onClick={handleBack} 
-            title="Go back to the previous step" className="small-button">
-            <i className="fas fa-arrow-left"></i> Back 
-          </button>)}
+           <div className="button-container">
+                <button onClick={handleBack} className="small-button">
+                    <i className="fas fa-arrow-left"></i> Back
+                </button>
+                <button onClick={handleNext} className="small-button">
+                    Next <i className="fas fa-arrow-right"></i>
+                </button>
+            </div>
         </div>
       );
     } else if (step === 4) {
@@ -336,12 +343,14 @@ function ChatBot() {
     No
   </label>
   <br />
-    <button onClick={handleNext} title="Proceed to the next step" className="small-button">
-        Next <i className="fas fa-arrow-right"></i></button>
-        {step > 1 && (<button onClick={handleBack} 
-        title="Go back to the previous step" className="small-button">
-        <i className="fas fa-arrow-left"></i> Back 
-    </button>)}
+    <div className="button-container">
+        <button onClick={handleBack} className="small-button">
+            <i className="fas fa-arrow-left"></i> Back
+        </button>
+        <button onClick={handleNext} className="small-button">
+            Next <i className="fas fa-arrow-right"></i>
+        </button>
+    </div>
 </div>
 
       );
@@ -382,12 +391,14 @@ function ChatBot() {
               <option value="No Preference">No Preference / I do not know what this is</option>
             </select>
           </div>
-            <button onClick={handleNext} title="Proceed to the next step" className="small-button">
-                Next <i className="fas fa-arrow-right"></i></button>
-                {step > 1 && (<button onClick={handleBack} 
-                title="Go back to the previous step" className="small-button">
-                <i className="fas fa-arrow-left"></i> Back 
-            </button>)}
+            <div className="button-container">
+                <button onClick={handleBack} className="small-button">
+                    <i className="fas fa-arrow-left"></i> Back
+                </button>
+                <button onClick={handleNext} className="small-button">
+                    Next <i className="fas fa-arrow-right"></i>
+                </button>
+            </div>
         </div>
       );
     } else if (step === 6) {
@@ -474,12 +485,14 @@ function ChatBot() {
             Apple TV+
           </label>
 
-          <button onClick={handleNext} title="Proceed to the next step" className="small-button">
-                Next <i className="fas fa-arrow-right"></i></button>
-                {step > 1 && (<button onClick={handleBack} 
-                title="Go back to the previous step" className="small-button">
-                <i className="fas fa-arrow-left"></i> Back 
-            </button>)}
+          <div className="button-container">
+                <button onClick={handleBack} className="small-button">
+                    <i className="fas fa-arrow-left"></i> Back
+                </button>
+                <button onClick={handleNext} className="small-button">
+                    Next <i className="fas fa-arrow-right"></i>
+                </button>
+            </div>
         </div>
       );
     } else if (step === 7) {

@@ -70,7 +70,7 @@ body {
 button {
     background-color: #e41d1d; /* Choose your desired button color */
     color: #fff;
-    padding: 10px 20px;
+    padding: 10px 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -85,18 +85,56 @@ button:hover {
     background-color: #a11e1e; /* Change the color on hover */
 }
 
+.button-container {
+    border-radius: 100px; /* This will make the button more round */
+    position: absolute;
+    bottom: 10px;
+    left: 5px; /* Adjust the left position as needed */
+    right: 75px; /* Adjust the right position as needed */
+    display: flex;
+    /* justify-content: space-between; */
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 1;
+}
+
 .small-button {
     background-color: #e41d1d;
     color: #fff;
-    padding: 5px 10px; /* Adjust the padding to change button size */
-    border: .5px solid black;
+    padding: 8px 12px; /* Adjust the padding to change button size */
+    border: 0.0625rem solid #fff; /* Border style and color */
     border-radius: 5px;
     cursor: pointer;
     font-family: 'Montserrat', sans-serif;
     transition: background-color 0.3s;
-    /* position: relative;
-    transform: translateX(-50%);
-    left: 50%; */
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 1;
+}
+
+.start-button {
+    padding: 10px 20px; /* Adjust the padding as needed */
+    background-color: #e41d1d; /* Background color */
+    color: #fff; /* Text color */
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 1;
+    border: 0.0625rem solid #fff; /* Border style and color */
+    cursor: pointer;
+    transition: color 0.2s;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Remove any other existing button styles that might interfere */
+.start-button:focus {
+}
+
+/* Add hover effect */
+.start-button:hover {
+    background-color: #a11e1e; /* Change the background color on hover */
+    color: #fff; /* Change the text color on hover */
 }
 
 .small-button:hover {
