@@ -5,16 +5,32 @@ import avatar from './avatar.png'; // Import the avatar image
 
 function ChatBot() {
   const [selectedLines, setSelectedLines] = useState(1);
-  const [step, setStep] = useState(1);
   const [smartWatch, setSmartWatch] = useState(0);
   const [jetpackHotspot, setJetpackHotspot] = useState(0);
   const [cellularTablet, setCellularTablet] = useState(0);
   const [userClassification, setUserClassification] = useState(null);
+  const [mobileHotspot, setMobileHotspot] = useState("No Preference");
+  const [cloudBackup, setCloudBackup] = useState("No Preference");
+  const [connectivity, setConnectivity] = useState("No Preference");
+  const [videoStreamingQuality, setVideoStreamingQuality] = useState("No Preference");
+  const [selectedServices, setSelectedServices] = useState({
+    "Verizon Fios Internet": false,
+    "Apple Music": false,
+    "Apple Arcade": false,
+    "Google Play Pass": false,
+    "Disney+": false,
+    "Hulu": false,
+    "ESPN+": false,
+    "Apple TV+": false,
+  });
   const [loading, setLoading] = useState(false);
+  const [step, setStep] = useState(1);
+  const [response, setResponse] = useState(null);
+
 
   // Inside ChatBot component:
   useEffect(() => {
-    if (step > 2) { // Only start the loader from step 3 onwards
+    if (step > 2 && step < 7) { // Only start the loader from step 3 onwards
       setLoading(true);
       const randomDelay = Math.random() * 1500 + 500;
       const timeout = setTimeout(() => {
@@ -22,6 +38,19 @@ function ChatBot() {
       }, randomDelay); // 1.5 seconds
       return () => clearTimeout(timeout); // Clear the timeout when component unmounts or when step changes
     }
+    if (step === 7) {
+      const getPlansAndProceed = async () => {
+          try {
+            console.log("chatgpt called")
+              await fetchPlans(); // Assuming fetchPlans returns a Promise
+              setStep(8);  // Move to the next step after fetchPlans completes
+          } catch (error) {
+              console.error('Error fetching plans:', error);
+              // Handle error as needed
+          }
+      };
+      getPlansAndProceed();
+  }
   }, [step]);
 
   const handleSliderChange = (event) => {
@@ -30,6 +59,7 @@ function ChatBot() {
 
   const handleNext = () => {
     if (step === 1) {
+      console.log("STEP 1")
       setStep(2);
     } else if (step === 2) {
       setStep(3);
@@ -44,9 +74,6 @@ function ChatBot() {
     } else if (step === 6) {
       // Handle the transition to the next step (step 7)
       setStep(7);
-    } else if (step === 7) {
-      // Handle the transition to the next step (step 8)
-      setStep(8);
     }
   };
 
@@ -60,8 +87,65 @@ function ChatBot() {
     setUserClassification(classification);
   };
 
+  const handleServiceChange = (e) => {
+    const { value, checked } = e.target;
+    setSelectedServices(prevServices => ({
+      ...prevServices,
+      [value]: checked
+    }));
+  };
+  
+
+  const fetchPlans = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch('http://localhost:3000/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+
+        body: JSON.stringify({
+          numLines: selectedLines,
+          numSmartWatches: smartWatch,  // Example values, adjust as needed
+          numJetpackHotspots: jetpackHotspot,  // Example values, adjust as needed
+          numCellularTablets: cellularTablet,  // Example values, adjust as needed
+          qualifyingGroup: userClassification,  // Adjusted based on user input
+          hotspotAmt: mobileHotspot,  // Example values, adjust as needed
+          cloudBackup: cloudBackup,  // Example values, adjust as needed
+          connectivity: connectivity,  // Example values, adjust as needed
+          videoStreaming: videoStreamingQuality,  // Example values, adjust as needed
+          serviceFios: selectedServices["Verizon Fios Internet"],  // Example values, adjust as needed
+          serviceAppleMusic: selectedServices["Apple Music"],  // Example values, adjust as needed
+          serviceAppleArcade: selectedServices["Apple Arcade"],  // Example values, adjust as needed
+          serviceGooglePlayPass: selectedServices["Google Play Pass"],  // Example values, adjust as needed
+          serviceDisney: selectedServices["Disney+"],  // Example values, adjust as needed
+          streamingHulu: selectedServices["Hulu"],  // Example values, adjust as needed
+          streamingESPN: selectedServices["ESPN+"],  // Example values, adjust as needed
+          streamingAppleTV: selectedServices["Apple TV+"]  // Example values, adjust as needed
+        })
+      });
+
+
+      const data = await response.json();
+      const { message } = data;
+      console.log(message)
+      setResponse(message);
+
+      // You might want to set the fetched data in the state if needed.
+      // setPlans(data); 
+
+    } catch (error) {
+      console.error('There was an error fetching the plans:', error);
+    } finally {
+      setLoading(false);
+      setStep(8);
+    }
+  };
+
+
   const getScreen = () => {
-    if (loading) {
+    if (loading && step !== 7) {
       return (
         <div className="chat-box">
           <p className="chat-message"><em>I'm processing something... please wait.</em></p>
@@ -174,7 +258,7 @@ function ChatBot() {
           <p className="chat-message">Do you prefer any of the upgrades in each of these categories below?</p>
           <div>
             <p>Mobile Hotspot</p>
-            <select>
+            <select value={mobileHotspot} onChange={e => setMobileHotspot(e.target.value)}>
               <option value="5GB">5GB</option>
               <option value="25GB">25GB</option>
               <option value="50GB">50GB</option>
@@ -183,7 +267,7 @@ function ChatBot() {
           </div>
           <div>
             <p>Cloud Backup</p>
-            <select>
+            <select value={cloudBackup} onChange={e => setCloudBackup(e.target.value)}>
               <option value="Yes">Yes</option>
               <option value="No">No</option>
               <option value="No Preference">No Preference / I do not know what this is</option>
@@ -191,7 +275,7 @@ function ChatBot() {
           </div>
           <div>
             <p>Connectivity</p>
-            <select>
+            <select value={connectivity} onChange={e => setConnectivity(e.target.value)}>
               <option value="Yes">Yes (5G Ultra Wideband and Premium Network Access)</option>
               <option value="No">No (regular Unlimited 4G LTE / 5G)</option>
               <option value="No Preference">No Preference / I do not know what this is</option>
@@ -199,7 +283,7 @@ function ChatBot() {
           </div>
           <div>
             <p>Video Streaming Quality</p>
-            <select>
+            <select value={videoStreamingQuality} onChange={e => setVideoStreamingQuality(e.target.value)}>
               <option value="480p">480p</option>
               <option value="720p">720p</option>
               <option value="No Preference">No Preference / I do not know what this is</option>
@@ -212,38 +296,86 @@ function ChatBot() {
       return (
         <div className="chat-box">
           <p className="chat-message">Select all services you are interested in using or currently are subscribed to.</p>
-            <label>
-              <input type="checkbox" value="Verizon Fios Internet" />
-              Verizon Fios Internet
-            </label>
-            <label>
-              <input type="checkbox" value="Apple Music" />
-              Apple Music
-            </label>
-            <label>
-              <input type="checkbox" value="Apple Arcade" />
-              Apple Arcade
-            </label>
-            <label>
-              <input type="checkbox" value="Google Play Pass" />
-              Google Play Pass
-            </label>
-            <label>
-              <input type="checkbox" value="Disney+" />
-              Disney+
-            </label>
-            <label>
-              <input type="checkbox" value="Hulu" />
-              Hulu
-            </label>
-            <label>
-              <input type="checkbox" value="ESPN+" />
-              ESPN+
-            </label>
-            <label>
-              <input type="checkbox" value="Apple TV+" />
-              Apple TV+
-            </label>
+          <label>
+            <input
+              type="checkbox"
+              value="Verizon Fios Internet"
+              checked={selectedServices["Verizon Fios Internet"]}
+              onChange={handleServiceChange}
+            />
+            Verizon Fios Internet
+          </label>
+
+          <label>
+            <input
+              type="checkbox"
+              value="Apple Music"
+              checked={selectedServices["Apple Music"]}
+              onChange={handleServiceChange}
+            />
+            Apple Music
+          </label>
+
+          <label>
+            <input
+              type="checkbox"
+              value="Apple Arcade"
+              checked={selectedServices["Apple Arcade"]}
+              onChange={handleServiceChange}
+            />
+            Apple Arcade
+          </label>
+
+          <label>
+            <input
+              type="checkbox"
+              value="Google Play Pass"
+              checked={selectedServices["Google Play Pass"]}
+              onChange={handleServiceChange}
+            />
+            Google Play Pass
+          </label>
+
+          <label>
+            <input
+              type="checkbox"
+              value="Disney+"
+              checked={selectedServices["Disney+"]}
+              onChange={handleServiceChange}
+            />
+            Disney+
+          </label>
+
+          <label>
+            <input
+              type="checkbox"
+              value="Hulu"
+              checked={selectedServices["Hulu"]}
+              onChange={handleServiceChange}
+            />
+            Hulu
+          </label>
+
+          <label>
+            <input
+              type="checkbox"
+              value="ESPN+"
+              checked={selectedServices["ESPN+"]}
+              onChange={handleServiceChange}
+            />
+            ESPN+
+          </label>
+
+          <label>
+            <input
+              type="checkbox"
+              value="Apple TV+"
+              checked={selectedServices["Apple TV+"]}
+              onChange={handleServiceChange}
+            />
+            Apple TV+
+          </label>
+
           <button onClick={handleNext}>Next</button>
         </div>
       );
@@ -254,6 +386,13 @@ function ChatBot() {
           <PulseLoader color="red" loading={true} size={15} />
         </div>
       );
+    } else if (step === 8) {
+      return (
+        <div className="chat-box">
+            <h1>Martin's Recommendation</h1>
+            <div className="chat-message" dangerouslySetInnerHTML={{ __html: response }} />
+        </div>
+    );
     }
   };
 
