@@ -39,6 +39,8 @@ function ChatBot() {
         case 1:
           currentMessage = "Welcome! My name is Martin, and I'm going to ask you some questions to help you decide on a Verizon Unlimited phone plan.";
           break;
+        default:
+          break;
       }
     }
     const intervalID = typeMessage(currentMessage);
@@ -69,6 +71,8 @@ function ChatBot() {
             break;
           case 7:
             currentMessage = "I'm determining the best plans for you!"
+            break;
+          default:
             break;
         }
         const intervalID = typeMessage(currentMessage);
