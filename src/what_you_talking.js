@@ -63,37 +63,20 @@ function ChatBot() {
   const getScreen = () => {
     if (loading) {
       return (
-        <div className="chat-container">
-          <div className="avatar-container">
-            <img src={avatar} alt="Avatar" className="avatar" />
-          </div>
           <div className="chat-box">
-            <h1 className="chat-message">I'm processing your answer...</h1>
+            <h1 className="chat-message">I'm processing something... please wait.</h1>
             <PulseLoader color="red" loading={true} size={15} />
           </div>
-        </div>
       );
     } else if (step === 1) {
       return (
-        <div>
-          <div className="chat-container">
-            <div className="avatar-container">
-              <img src={avatar} alt="Avatar" className="avatar" />
-            </div>
             <div className="chat-box">
               <h1 className="chat-message">Welcome! I am your personal Verizon agent Martin here to help you find the plan to match your needs.</h1>
               <button onClick={handleNext}>Let's get started</button>
             </div>
-          </div>
-        </div>
       );
     } else if (step === 2) {
       return (
-        <div>
-          <div className="chat-container">
-            <div className="avatar-container">
-              <img src={avatar} alt="Avatar" className="avatar" />
-            </div>
             <div className="chat-box">
               <p className="chat-message">Let's learn more about what you want! How many lines would you like to have on your plan?</p>
               <input
@@ -106,16 +89,9 @@ function ChatBot() {
               <span>{selectedLines} Line(s)</span>
               <button onClick={handleNext}>Next</button>
             </div>
-          </div>
-        </div>
       );
     } else if (step === 3) {
       return (
-        <div>
-          <div className="chat-container">
-            <div className="avatar-container">
-              <img src={avatar} alt="Avatar" className="avatar" />
-            </div>
             <div className="chat-box">
               <p className="chat-message">How many of each connected device are you including in your plan?</p>
               <div>
@@ -153,16 +129,9 @@ function ChatBot() {
               </div>
               <button onClick={handleNext}>Next</button>
             </div>
-          </div>
-        </div>
       );
     } else if (step === 4) {
       return (
-        <div>
-          <div className="chat-container">
-            <div className="avatar-container">
-              <img src={avatar} alt="Avatar" className="avatar" />
-            </div>
             <div className="chat-box">
               <p className="chat-message">Do you fall under any of the following?</p>
               <li>
@@ -203,16 +172,9 @@ function ChatBot() {
               </li>
               <button onClick={handleNext}>Next</button>
             </div>
-          </div>
-        </div>
       );
     } else if (step === 5) {
       return (
-        <div>
-          <div className="chat-container">
-            <div className="avatar-container">
-              <img src={avatar} alt="Avatar" className="avatar" />
-            </div>
             <div className="chat-box">
               <p className="chat-message">Do you prefer any of the upgrades in each of these categories? If none of these matter to you beyond Unlimited Talk/Text/Data, select “N/A.”</p>
               <div>
@@ -250,16 +212,9 @@ function ChatBot() {
               </div>
               <button onClick={handleNext}>Next</button>
             </div>
-          </div>
-        </div>
       );
     } else if (step === 6) {
       return (
-        <div>
-          <div className="chat-container">
-            <div className="avatar-container">
-              <img src={avatar} alt="Avatar" className="avatar" />
-            </div>
             <div className="chat-box">
               <p className="chat-message">Select all services you are interested in using or currently are subscribed to.</p>
               <li>
@@ -312,30 +267,31 @@ function ChatBot() {
               </li>
               <button onClick={handleNext}>Next</button>
             </div>
-          </div>
-        </div>
       );
     } else if (step === 7) {
       return (
-        <div>
-          <div className="chat-container">
-            <div className="avatar-container">
-              <img src={avatar} alt="Avatar" className="avatar" />
-            </div>
             <div className="chat-box">
               <h1 className="chat-message">I'm determining the best plans for you!</h1>
               <PulseLoader color="red" loading={true} size={15} />
             </div>
-          </div>
-        </div>
       );
     }
   };
 
   return (
     <div className="ChatBot">
-      <div className="chat-content">{getScreen()}</div>
-      {step > 1 && <button onClick={handleBack}>Back</button>}
+      <div className="chat-content">
+      <div>
+          <div className="chat-container">
+            <div className="avatar-container">
+              <img src={avatar} alt="Avatar" className="avatar" />
+            </div>
+        {getScreen()}
+        {step > 1 && <button onClick={handleBack}>Back</button>}
+          </div>
+        </div>
+      </div>
+      
     </div>
   );
 }
