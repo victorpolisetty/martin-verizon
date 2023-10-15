@@ -42,7 +42,7 @@ body {
   .chat-content {
     position: relative;
     display: flex;
-    text-align: center;
+    /* text-align: center; */
     max-width: 60%;
     padding: 20px;
     font-family: 'Nunito', sans-serif;

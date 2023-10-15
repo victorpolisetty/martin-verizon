@@ -71,7 +71,7 @@ function ChatBot() {
     } else if (step === 1) {
       return (
         <div className="chat-box">
-          <h1 className="chat-message">Welcome! I am your personal Verizon agent Martin here to help you find the plan to match your needs.</h1>
+          <h1 className="chat-message">Welcome! My name is Martin, and I'm going to ask you some questions to help you decide on a Verizon Unlimited phone plan.</h1>
           <button onClick={handleNext}>Let's get started</button>
         </div>
       );
@@ -94,7 +94,7 @@ function ChatBot() {
     } else if (step === 3) {
       return (
         <div className="chat-box">
-          <p className="chat-message">How many of each connected device are you including in your plan?</p>
+          <p className="chat-message">How many of each connected device are you adding to your plan?</p>
           <div>
             <p>Smart Watch</p>
             <input
@@ -171,7 +171,7 @@ function ChatBot() {
     } else if (step === 5) {
       return (
         <div className="chat-box">
-          <p className="chat-message">Do you prefer any of the upgrades in each of these categories? If none of these matter to you beyond Unlimited Talk/Text/Data, select “N/A.”</p>
+          <p className="chat-message">Do you prefer any of the upgrades in each of these categories below?</p>
           <div>
             <p>Mobile Hotspot</p>
             <select>
@@ -190,7 +190,7 @@ function ChatBot() {
             </select>
           </div>
           <div>
-            <p>Connectivity (5G Ultra Wideband and Premium Network Access)</p>
+            <p>Connectivity</p>
             <select>
               <option value="Yes">Yes (5G Ultra Wideband and Premium Network Access)</option>
               <option value="No">No (regular Unlimited 4G LTE / 5G)</option>
