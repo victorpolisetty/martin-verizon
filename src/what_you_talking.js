@@ -205,45 +205,51 @@ function ChatBot() {
       );
     } else if (step === 4) {
       return (
-        <div className="chat-box">
-          <p className="chat-message">{typedMessage}</p>
-            <label>
-              <input
-                type="radio"
-                name="classification"
-                value="teacherNurseMilitary"
-                checked={userClassification === 'teacherNurseMilitary'}
-                onChange={() => handleUserClassification('teacherNurseMilitary')}
-              />
-              Teacher, Nurse, Military, First Responder
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="classification"
-                value="collegeStudent"
-                checked={userClassification === 'collegeStudent'}
-                onChange={() => handleUserClassification('collegeStudent')}
-              />
-              College Student
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="classification"
-                value="no"
-                checked={userClassification === 'no'}
-                onChange={() => handleUserClassification('no')}
-              />
-              No
-            </label>
-            <button onClick={handleNext} title="Proceed to the next step">
+        
+<div className="chat-box">
+  <p className="chat-message">Do you fall under any of the following?</p>
+  <label>
+  <br />
+    <input
+      type="radio"
+      name="classification"
+      value="teacherNurseMilitary"
+      checked={userClassification === 'teacherNurseMilitary'}
+      onChange={() => handleUserClassification('teacherNurseMilitary')}
+    />
+    Teacher, Nurse, Military, First Responder
+  </label>
+  <br />
+  <label>
+    <input
+      type="radio"
+      name="classification"
+      value="collegeStudent"
+      checked={userClassification === 'collegeStudent'}
+      onChange={() => handleUserClassification('collegeStudent')}
+    />
+    College Student
+  </label>
+  <br />
+  <label>
+    <input
+      type="radio"
+      name="classification"
+      value="no"
+      checked={userClassification === 'no'}
+      onChange={() => handleUserClassification('no')}
+    />
+    No
+  </label>
+  <br />
+  <button onClick={handleNext} title="Proceed to the next step">
                 Next <i className="fas fa-arrow-right"></i></button>
-                {step > 1 && <button onClick={handleBack} 
+                {step > 1 && step < 7 && <button onClick={handleBack} 
                 title="Go back to the previous step">
                 <i className="fas fa-arrow-left"></i> Back
             </button>}
-        </div>
+</div>
+
       );
     } else if (step === 5) {
       return (
