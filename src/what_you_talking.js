@@ -54,7 +54,7 @@ function ChatBot() {
       setTypedMessage("");
       switch (step) {
         case 1:
-          currentMessage = "Welcome! My name is Martin, and I'm going to ask you some questions to help you decide on a Verizon Unlimited phone plan.";
+          currentMessage = "Welcome! I'm Martin, and I'm here to help you choose a Verizon Unlimited phone plan.";
           break;
         default:
           break;

@@ -4,10 +4,30 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+html, body {
+    width: 100%;
+    height:100%;
+}
+
 body {
     margin: 0;
     padding: 0;
+    background: linear-gradient(-45deg, #f9faf7, #ef1d1d, #f9faf7, #ef1d1d);
+    background-size: 400% 400%;
+    animation: gradient 45s ease infinite;
 }
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+  }
 
 .chat-styles {
     text-align: center;
@@ -29,8 +49,8 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background: radial-gradient(ellipse at center center, rgba(220, 209, 209), rgba(205, 4, 11));
-    background-size: cover;
+    /* background: radial-gradient(ellipse at center center, rgba(220, 209, 209), rgba(205, 4, 11));
+    background-size: cover; */
     @media (max-width: 768px) {
         /* Adjust layout for smaller screens */
         padding: 20px;
@@ -48,7 +68,7 @@ body {
 }
 
 button {
-    background-color: #ff5722; /* Choose your desired button color */
+    background-color: #e41d1d; /* Choose your desired button color */
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -62,22 +82,25 @@ button {
 }
 
 button:hover {
-    background-color: #b41b1b; /* Change the color on hover */
+    background-color: #a11e1e; /* Change the color on hover */
 }
 
 .small-button {
-    background-color: #ff5722;
+    background-color: #e41d1d;
     color: #fff;
     padding: 5px 10px; /* Adjust the padding to change button size */
-    border: none;
+    border: .5px solid black;
     border-radius: 5px;
     cursor: pointer;
     font-family: 'Montserrat', sans-serif;
     transition: background-color 0.3s;
+    /* position: relative;
+    transform: translateX(-50%);
+    left: 50%; */
 }
 
 .small-button:hover {
-    background-color: #e64a19;
+    background-color: #a11e1e;
 }
 
 /* Adjust the space between radio dots and the start of the words */
@@ -98,6 +121,7 @@ input[type="radio"] {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     box-sizing: border-box;
+    position: relative;
 }
 
 .avatar-container {
@@ -118,6 +142,7 @@ input[type="radio"] {
     align-items: flex-start;
     justify-content: flex-start;
     overflow: auto; /* To handle potential overflow of content */
+    position: relative;
 }
 
 /* Styles for chat messages */
