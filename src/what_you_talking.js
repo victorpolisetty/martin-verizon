@@ -171,7 +171,7 @@ function ChatBot() {
   const fetchPlans = async () => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/chat', {
+      const response = await fetch('http://localhost:3000/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -474,7 +474,12 @@ function ChatBot() {
             Apple TV+
           </label>
 
-          <button onClick={handleNext}>Next</button>
+          <button onClick={handleNext} title="Proceed to the next step" className="small-button">
+                Next <i className="fas fa-arrow-right"></i></button>
+                {step > 1 && (<button onClick={handleBack} 
+                title="Go back to the previous step" className="small-button">
+                <i className="fas fa-arrow-left"></i> Back 
+            </button>)}
         </div>
       );
     } else if (step === 7) {
