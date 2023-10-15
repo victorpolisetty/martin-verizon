@@ -326,7 +326,7 @@ function ChatBot() {
       return (
         
 <div className="chat-box">
-  <p className="chat-message">{typedMessage}</p>
+  <p className="chat-message chat-message-radio-buttons">{typedMessage}</p>
   <label>
   <br />
     <input
@@ -336,7 +336,7 @@ function ChatBot() {
       checked={userClassification === 'teacherNurseMilitary'}
       onChange={() => handleUserClassification('teacherNurseMilitary')}
     />
-    Teacher, Nurse, Military, First Responder
+    <span className="radio-label">Teacher, Nurse, Military, First Responder</span>
   </label>
   <br />
   <label>
@@ -347,7 +347,7 @@ function ChatBot() {
       checked={userClassification === 'collegeStudent'}
       onChange={() => handleUserClassification('collegeStudent')}
     />
-    College Student
+    <span className="radio-label">College Student</span>
   </label>
   <br />
   <label>
@@ -358,7 +358,7 @@ function ChatBot() {
       checked={userClassification === 'no'}
       onChange={() => handleUserClassification('no')}
     />
-    No
+    <span className="radio-label">No</span>
   </label>
   <br />
     <div className="button-container">
@@ -378,7 +378,7 @@ function ChatBot() {
           <p className="chat-message">{typedMessage}</p>
           <br />
           <FormControl fullWidth>
-  <InputLabel style={{ marginTop: '-8px' }}>Mobile Hotspot</InputLabel>
+  <InputLabel style={{ marginTop: '-8px'}}>Mobile Hotspot</InputLabel>
   <Select
     value={mobileHotspot}
     onChange={(e) => handleSelectChange(e, setMobileHotspot)}

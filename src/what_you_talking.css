@@ -194,10 +194,54 @@ input[type="radio"] {
     font-size: 18px;
 }
 
+.chat-message-radio-buttons {
+    margin-bottom: 30px;
+}
+
 .slider {
-    width: 35%; /* Adjust the width as needed */
+    margin-top: 15px;
+    width: 77%; /* Adjust the width as needed */
   }
   
   .slider2 {
-    width: 175%; /* Adjust the width as needed */
+    width: 210%; /* Adjust the width as needed */
   }
+
+
+/* Styles for radio buttons and labels */
+label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .radio-label {
+    font-size: 18px;
+    margin-left: 10px; /* Adjust spacing between radio button and label */
+  }
+  
+  /* Style the radio buttons */
+  input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #e41d1d;
+    border-radius: 50%;
+    margin-right: 10px; /* Adjust spacing between radio button and label */
+  }
+  
+  /* Provide visual feedback when radio button is checked */
+  input[type="radio"]:checked {
+    background-color: #e41d1d;
+  }
+  
+  /* Add hover effect to the radio buttons */
+  input[type="radio"]:not(:checked):hover {
+    background-color: #c3abab;
+  }
+  
+  /* You can add more styles and animations as desired */
+  
