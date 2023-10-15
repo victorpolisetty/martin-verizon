@@ -123,7 +123,7 @@ function ChatBot() {
   };
 
   const getScreen = () => {
-    if (loading) {
+    if (loading && step != 7) {
         return (
             <div className="chat-box">
               <p className="chat-message"><em>I'm processing something... please wait.</em></p>
@@ -152,7 +152,7 @@ function ChatBot() {
           {selectedLines === 5 && <span>{selectedLines}+ Line(s)</span>}
           <button onClick={handleNext} title="Proceed to the next step" className="small-button">
             Next <i className="fas fa-arrow-right"></i></button>
-            {step > 1 && (<button onClick={handleBack} 
+            {step > 1 && !loading && (<button onClick={handleBack} 
             title="Go back to the previous step" className="small-button">
             <i className="fas fa-arrow-left"></i> Back 
           </button>)}
@@ -207,7 +207,7 @@ function ChatBot() {
       return (
         
 <div className="chat-box">
-  <p className="chat-message">Do you fall under any of the following?</p>
+  <p className="chat-message">{typedMessage}</p>
   <label>
   <br />
     <input
@@ -242,12 +242,12 @@ function ChatBot() {
     No
   </label>
   <br />
-  <button onClick={handleNext} title="Proceed to the next step">
-                Next <i className="fas fa-arrow-right"></i></button>
-                {step > 1 && step < 7 && <button onClick={handleBack} 
-                title="Go back to the previous step">
-                <i className="fas fa-arrow-left"></i> Back
-            </button>}
+    <button onClick={handleNext} title="Proceed to the next step" className="small-button">
+        Next <i className="fas fa-arrow-right"></i></button>
+        {step > 1 && (<button onClick={handleBack} 
+        title="Go back to the previous step" className="small-button">
+        <i className="fas fa-arrow-left"></i> Back 
+    </button>)}
 </div>
 
       );
@@ -288,12 +288,12 @@ function ChatBot() {
               <option value="No Preference">No Preference / I do not know what this is</option>
             </select>
           </div>
-            <button onClick={handleNext} title="Proceed to the next step">
+            <button onClick={handleNext} title="Proceed to the next step" className="small-button">
                 Next <i className="fas fa-arrow-right"></i></button>
-                {step > 1 && <button onClick={handleBack} 
-                title="Go back to the previous step">
-                <i className="fas fa-arrow-left"></i> Back
-            </button>}
+                {step > 1 && (<button onClick={handleBack} 
+                title="Go back to the previous step" className="small-button">
+                <i className="fas fa-arrow-left"></i> Back 
+            </button>)}
         </div>
       );
     } else if (step === 6) {
@@ -334,12 +334,12 @@ function ChatBot() {
             label="Apple TV+"
           />
           
-          <button onClick={handleNext} title="Proceed to the next step">
-              Next <i className="fas fa-arrow-right"></i></button>
-              {step > 1 && step < 7 && <button onClick={handleBack} 
-              title="Go back to the previous step">
-              <i className="fas fa-arrow-left"></i> Back
-          </button>}
+          <button onClick={handleNext} title="Proceed to the next step" className="small-button">
+            Next <i className="fas fa-arrow-right"></i></button>
+            {step > 1 && (<button onClick={handleBack} 
+            title="Go back to the previous step" className="small-button">
+            <i className="fas fa-arrow-left"></i> Back 
+          </button>)}
         </div>
       );
     } else if (step === 7) {
