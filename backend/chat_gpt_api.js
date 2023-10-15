@@ -1,8 +1,12 @@
 const express = require('express');
 const axios = require('axios');
 const bodyParser = require('body-parser');
+const cors = require('cors');
+
 
 const app = express();
+app.use(cors());
+
 
 const PORT = 3000;
 const OPENAI_API_URL = 'https://api.openai.com/v1/chat/completions'; // This is for GPT-3, ensure you have the correct endpoint for GPT-4.
@@ -110,10 +114,7 @@ const conversation = [
     },
     {
         role: "assistant",
-        content: `Important Clarifications:
-For example, having 3 lines means I will be charged the 3L rate per month.
-If there is/are connected device(s), the Connected Device Discount for the plan must apply. Remember to apply the connected device discount for the corresponding plan.
-If I have a connected device, which includes Smart Watches, Jetpack Hotspots, and Cellular Tablets. Then I should get 50% off the price of each of these devices if I am trying to purchase the 5G Do More, 5G Get More, or Apple One Unlimited. To properly format the content with breaks and bolding, you'd want to use a combination of HTML tags such as <br> for line breaks, <strong> or <b> for bold text, and <ul>/<li> for lists. I would like the text to be formatted as such in HTML. Make the output so that it will be formatted correctly inside a <p> tag.`
+        content: `For example, having 3 lines means I will be charged the 3L rate per month.If there is/are connected device(s), the Connected Device Discount for the plan must apply. Remember to apply the connected device discount for the corresponding plan. If I have a connected device, which includes Smart Watches, Jetpack Hotspots, and Cellular Tablets. Then I should get 50% off the price of each of these devices if I am trying to purchase the 5G Do More, 5G Get More, or Apple One Unlimited. To properly format the content with breaks and bolding, you'd want to use a combination of HTML tags such as <br> for line breaks and <ul>/<li> for lists. I would like the text to be formatted as such in HTML. Make the output so that it will be formatted correctly inside a <p> tag. Do not use <b> or <strong> tags`
     }
 ];
 
@@ -121,9 +122,6 @@ console.log(conversation);
 
 
 app.use(bodyParser.json());
-
-app.post('/chat', async (req, res) => {
-    const user_input = req.body.user_input;
     // user_input map:
     // keys:
         // user_input["numLines"]: int (1 to 5)
@@ -145,7 +143,50 @@ app.post('/chat', async (req, res) => {
         // user_input["streamingHulu"]: bool
         // user_input["streamingESPN"]: bool
         // user_input["streamingAppleTV"]: bool
+app.post('/chat', async (req, res) => {
+    const {
+        numLines,
+        numSmartWatches,
+        numJetpackHotspots,
+        numCellularTablets,
+        qualifyingGroup,
+        hotspotAmt,
+        cloudBackup,
+        connectivity,
+        videoStreaming,
+        serviceFios,
+        serviceAppleMusic,
+        serviceAppleArcade,
+        serviceGooglePlayPass,
+        serviceDisney,
+        streamingHulu,
+        streamingESPN,
+        streamingAppleTV
+    } = req.body;
 
+    // Construct user_input based on provided variables
+    const user_input = `
+    I need a phone plan with the following requirements. Make sure to give the price breakdown to find the cheapest plan:
+    - Number of lines: ${numLines}
+    - Smart Watches: ${numSmartWatches}
+    - Jetpack Hotspots: ${numJetpackHotspots}
+    - Cellular Tablets: ${numCellularTablets}
+    - Qualifying Group: ${qualifyingGroup}
+    - Hotspot Amount: ${hotspotAmt}
+    - Cloud Backup: ${cloudBackup}
+    - Connectivity: ${connectivity ? 'Yes' : 'No'}
+    - Video Streaming Quality: ${videoStreaming}
+    ${serviceFios ? '- I use Fios service.\n' : ''}
+    ${serviceAppleMusic ? '- I want Apple Music included.\n' : ''}
+    ${serviceAppleArcade ? '- I want Apple Arcade included.\n' : ''}
+    ${serviceGooglePlayPass ? '- I want Google Play Pass included.\n' : ''}
+    ${serviceDisney ? '- I want Disney+ included.\n' : ''}
+    ${streamingHulu ? '- I want Hulu included.\n' : ''}
+    ${streamingESPN ? '- I want ESPN+ included.\n' : ''}
+    ${streamingAppleTV ? '- I want Apple TV+ included.\n' : ''}
+    `;
+
+    console.log(user_input);
     
     // Exit condition
     if (user_input.toLowerCase() === 'exit') {
@@ -178,6 +219,5 @@ app.post('/chat', async (req, res) => {
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`Server started on http://localhost:${PORT}`);
-});
+app.listen(5000);
+
