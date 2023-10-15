@@ -1,18 +1,8 @@
 /* Updated CSS */
-body {
-    /* background: radial-gradient(
-      ellipse at bottom right,
-      rgba(29, 39, 54, 0.16) 0%,
-      rgba(29, 39, 54, 0) 72%
-    ); */ 
-    /* /* margin: 0;
-    padding: 0;
-    background-image: url('verizon_background.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    color: white;
-    font-family: 'Nunito', sans-serif;
-    min-height: 100vh; */
+/* * {
+outline: 1px solid red;
+} */
+  body {
     margin: 0;
     padding: 0;
   }
@@ -50,6 +40,7 @@ body {
     position: relative;
     display: flex;
     text-align: center;
+    max-width: 60%;
     padding: 20px;
     font-family: 'Nunito', sans-serif;
   }
@@ -63,10 +54,13 @@ body {
     cursor: pointer;
     font-family: 'Nunito', sans-serif;
     transition: background-color 0.3s; /* Add a smooth transition effect */
+    max-width: 200px; /* Set a maximum width */
+    display: inline-block; /* Makes the button inline */
+    margin-top: 10px;
   }
   
   button:hover {
-    background-color: #e64a19; /* Change the color on hover */
+    background-color: #b41b1b; /* Change the color on hover */
   }
 
   .small-button {
@@ -91,11 +85,13 @@ body {
     justify-content: space-between; /* Align buttons on opposite sides */
     align-items: center;
     background-color: #F2F4F6;
+    align-items: flex-start;
     padding: 20px;
     border-radius: 10px;
     max-width: 80%;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
+    box-sizing: border-box;
   }
   
   .avatar-container {
@@ -105,15 +101,18 @@ body {
   .avatar-container img {
     max-width: 60px;
     height: auto;
-    border-radius: 50%;
+    border-radius: 30%;
   }
   
   .chat-box {
-    flex: 1;
+    width: 50vw;  /* 50% of the viewport width */
+    height: 70vh; /* 70% of the viewport height */
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Vertically center text in the chat box */
-  }
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow: auto; /* To handle potential overflow of content */
+    }
   
   /* Styles for chat messages */
   .chat-message {
