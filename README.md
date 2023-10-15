@@ -14,11 +14,17 @@ Step 0: Download requirements
 
 Step 1: clone repo
 
-Step 2: npm install
+Step 2: npm install (to get necessary requirements)
 
-Step 3: backend setup
+-> Potential missing packages
+- Cors: npm install cors
+- OpenAI: pip install openai
 
-Step 4: 
+Step 3: Start the backend server using: node backend/chat_gpt_api.js
+
+Step 4: Start the Frontend web app using: npm start (it may ask to switch ports, click YES)
+
+Step 5: Open up the react web app on "localhost:3001" in any browser
 
 ## Appendix
 
