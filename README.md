@@ -14,7 +14,6 @@ Please contact `zhang.jonathan@ufl.edu` to be provided access to our authenticat
 
 - Node.js
 - npm
-- Python 3
 
 **Step 1:** Clone the repository.
 
@@ -24,9 +23,7 @@ Please contact `zhang.jonathan@ufl.edu` to be provided access to our authenticat
 
 `npm install`
 
-Potential missing packages
-- Cors: `npm install cors`
-- OpenAI: `pip install openai`
+`npm install cors` (may be missing)
 
 **Step 3:** Start the backend server.
 
@@ -34,7 +31,7 @@ Potential missing packages
 
 `node backend/chat_gpt_api.js`
 
-**Step 4:** Start the frontend web app in a new terminal. It may ask to switch ports, click YES.
+**Step 4:** Start the frontend web app in a new terminal. If it asks to switch ports, click YES.
 
 `npm start`
 
