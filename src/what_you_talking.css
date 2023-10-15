@@ -68,12 +68,28 @@ body {
   button:hover {
     background-color: #e64a19; /* Change the color on hover */
   }
+
+  .small-button {
+    background-color: #ff5722;
+    color: #fff;
+    padding: 5px 10px; /* Adjust the padding to change button size */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    transition: background-color 0.3s;
+  }
+
+  .small-button:hover {
+    background-color: #e64a19;
+  }
   
   /* Styles for chat container, avatar, and chat box */
   .chat-container {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    justify-content: space-between; /* Align buttons on opposite sides */
+    align-items: center;
     background-color: #F2F4F6;
     padding: 20px;
     border-radius: 10px;
@@ -96,6 +112,7 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
+    justify-content: center; /* Vertically center text in the chat box */
   }
   
   /* Styles for chat messages */

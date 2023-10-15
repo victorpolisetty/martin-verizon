@@ -57,11 +57,8 @@ function ChatBot() {
             </div>
             <div className="chat-box">
               <h1 className="chat-message">Welcome! I am your personal Verizon agent Martin here to help you find the plan to match your needs.</h1>
-              <button onClick={handleNext} title="Proceed to the next step">
+              <button onClick={handleNext} title="Proceed to the next step" className="small-button">
                 Next <i className="fas fa-arrow-right"></i></button>
-                {step > 1 && <button onClick={handleBack} 
-                title="Go back to the previous step">
-                    <i className="fas fa-arrow-left"></i> Back</button>}
             </div>
           </div>
         </div>
@@ -83,11 +80,12 @@ function ChatBot() {
                 onChange={handleSliderChange}
               />
               <span>{selectedLines} Line(s)</span>
-              <button onClick={handleNext} title="Proceed to the next step">
+              <button onClick={handleNext} title="Proceed to the next step" className="small-button">
                 Next <i className="fas fa-arrow-right"></i></button>
-                {step > 1 && <button onClick={handleBack} 
-                title="Go back to the previous step">
-                    <i className="fas fa-arrow-left"></i> Back</button>}
+                {step > 1 && (
+                <button onClick={handleBack} title="Go back to the previous step" className="small-button">
+                    <i className="fas fa-arrow-left"></i> Back
+                </button>)}
             </div>
           </div>
         </div>
