@@ -387,8 +387,7 @@ function ChatBot() {
     } else if (step === 6) {
       return (
         <div className="chat-box">
-<<<<<<< HEAD
-          <p className="chat-message">Select all services you are interested in using or currently are subscribed to.</p>
+          <p className="chat-message">{typedMessage}</p>
           <label>
             <input
               type="checkbox"
@@ -470,49 +469,6 @@ function ChatBot() {
           </label>
 
           <button onClick={handleNext}>Next</button>
-=======
-          <p className="chat-message">{typedMessage}</p>
-          
-          <FormControlLabel
-            control={<Checkbox value="Verizon Fios Internet" />}
-            label="Verizon Fios Internet"
-          />
-          <FormControlLabel
-            control={<Checkbox value="Apple Music" />}
-            label="Apple Music"
-          />
-          <FormControlLabel
-            control={<Checkbox value="Apple Arcade" />}
-            label="Apple Arcade"
-          />
-          <FormControlLabel
-            control={<Checkbox value="Google Play Pass" />}
-            label="Google Play Pass"
-          />
-          <FormControlLabel
-            control={<Checkbox value="Disney+" />}
-            label="Disney+"
-          />
-          <FormControlLabel
-            control={<Checkbox value="Hulu" />}
-            label="Hulu"
-          />
-          <FormControlLabel
-            control={<Checkbox value="ESPN+" />}
-            label="ESPN+"
-          />
-          <FormControlLabel
-            control={<Checkbox value="Apple TV+" />}
-            label="Apple TV+"
-          />
-
-          <button onClick={handleNext} title="Proceed to the next step">
-              Next <i className="fas fa-arrow-right"></i></button>
-              {step > 1 && step < 7 && <button onClick={handleBack} 
-              title="Go back to the previous step">
-              <i className="fas fa-arrow-left"></i> Back
-          </button>}
->>>>>>> jz1
         </div>
       );
     } else if (step === 7) {
