@@ -64,14 +64,14 @@ function ChatBot() {
     if (loading) {
       return (
         <div className="chat-box">
-          <h1 className="chat-message">I'm processing something... please wait.</h1>
+          <p className="chat-message"><em>I'm processing something... please wait.</em></p>
           <PulseLoader color="red" loading={true} size={15} />
         </div>
       );
     } else if (step === 1) {
       return (
         <div className="chat-box">
-          <h1 className="chat-message">Welcome! My name is Martin, and I'm going to ask you some questions to help you decide on a Verizon Unlimited phone plan.</h1>
+          <p className="chat-message">Welcome! My name is Martin, and I'm going to ask you some questions to help you decide on a Verizon Unlimited phone plan.</p>
           <button onClick={handleNext}>Let's get started</button>
         </div>
       );
@@ -250,7 +250,7 @@ function ChatBot() {
     } else if (step === 7) {
       return (
         <div className="chat-box">
-          <h1 className="chat-message">I'm determining the best plans for you!</h1>
+          <p className="chat-message"><em>I'm determining the best plans for you!</em></p>
           <PulseLoader color="red" loading={true} size={15} />
         </div>
       );
