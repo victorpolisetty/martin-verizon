@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './what_you_talking.css'; // Import your CSS file
 import PulseLoader from 'react-spinners/PulseLoader';
 import avatar from './avatar.png'; // Import the avatar image
+import Checkbox from '@mui/material/Checkbox';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 function ChatBot() {
   const [selectedLines, setSelectedLines] = useState(1);
@@ -292,44 +294,46 @@ function ChatBot() {
       return (
         <div className="chat-box">
           <p className="chat-message">{typedMessage}</p>
-            <label>
-              <input type="checkbox" value="Verizon Fios Internet" />
-              Verizon Fios Internet
-            </label>
-            <label>
-              <input type="checkbox" value="Apple Music" />
-              Apple Music
-            </label>
-            <label>
-              <input type="checkbox" value="Apple Arcade" />
-              Apple Arcade
-            </label>
-            <label>
-              <input type="checkbox" value="Google Play Pass" />
-              Google Play Pass
-            </label>
-            <label>
-              <input type="checkbox" value="Disney+" />
-              Disney+
-            </label>
-            <label>
-              <input type="checkbox" value="Hulu" />
-              Hulu
-            </label>
-            <label>
-              <input type="checkbox" value="ESPN+" />
-              ESPN+
-            </label>
-            <label>
-              <input type="checkbox" value="Apple TV+" />
-              Apple TV+
-            </label>
-            <button onClick={handleNext} title="Proceed to the next step">
-                Next <i className="fas fa-arrow-right"></i></button>
-                {step > 1 && step < 7 && <button onClick={handleBack} 
-                title="Go back to the previous step">
-                <i className="fas fa-arrow-left"></i> Back
-            </button>}
+          
+          <FormControlLabel
+            control={<Checkbox value="Verizon Fios Internet" />}
+            label="Verizon Fios Internet"
+          />
+          <FormControlLabel
+            control={<Checkbox value="Apple Music" />}
+            label="Apple Music"
+          />
+          <FormControlLabel
+            control={<Checkbox value="Apple Arcade" />}
+            label="Apple Arcade"
+          />
+          <FormControlLabel
+            control={<Checkbox value="Google Play Pass" />}
+            label="Google Play Pass"
+          />
+          <FormControlLabel
+            control={<Checkbox value="Disney+" />}
+            label="Disney+"
+          />
+          <FormControlLabel
+            control={<Checkbox value="Hulu" />}
+            label="Hulu"
+          />
+          <FormControlLabel
+            control={<Checkbox value="ESPN+" />}
+            label="ESPN+"
+          />
+          <FormControlLabel
+            control={<Checkbox value="Apple TV+" />}
+            label="Apple TV+"
+          />
+          
+          <button onClick={handleNext} title="Proceed to the next step">
+              Next <i className="fas fa-arrow-right"></i></button>
+              {step > 1 && step < 7 && <button onClick={handleBack} 
+              title="Go back to the previous step">
+              <i className="fas fa-arrow-left"></i> Back
+          </button>}
         </div>
       );
     } else if (step === 7) {
