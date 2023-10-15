@@ -11,10 +11,73 @@ function ChatBot() {
   const [cellularTablet, setCellularTablet] = useState(0);
   const [userClassification, setUserClassification] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [typedMessage, setTypedMessage] = useState("");
+  const [typing, setTyping] = useState(false);
 
-  // Inside ChatBot component:
+  const typeMessage = (message) => {
+    setTyping(true);
+    let index = 0;
+    const interval = setInterval(() => {
+      if (index < message.length) {
+        setTypedMessage((prevTypedMessage) => prevTypedMessage + message[index]);
+        index++;
+      } else {
+        clearInterval(interval);
+        setTyping(false);
+      }
+    }, 25); // You can adjust the speed of typing here
+    return interval; // Return interval ID to clear it if needed
+  };
+
   useEffect(() => {
-    if (step > 2) { // Only start the loader from step 3 onwards
+    let currentMessage = "";
+    if (!loading) {
+      setTypedMessage("");
+      switch (step) {
+        case 1:
+          currentMessage = "Welcome! My name is Martin, and I'm going to ask you some questions to help you decide on a Verizon Unlimited phone plan.";
+          break;
+      }
+    }
+    const intervalID = typeMessage(currentMessage);
+    return () => {
+      clearInterval(intervalID);
+    };
+  }, [step]);
+
+  useEffect(() => {
+    if (!loading && step > 1) {
+      setTypedMessage("");
+        let currentMessage = "";
+        switch (step) {
+          case 2:
+            currentMessage = "Let's learn more about what you want! How many lines would you like to have on your plan?";
+            break;
+          case 3:
+            currentMessage = "How many of each connected device are you adding to your plan?"
+            break;
+          case 4:
+            currentMessage = "Do you fall under any of the following?"
+            break;
+          case 5:
+            currentMessage = "Do you prefer any of the upgrades in each of these categories below?"
+            break;
+          case 6:
+            currentMessage = "Select all services you are interested in using or currently are subscribed to."
+            break;
+          case 7:
+            currentMessage = "I'm determining the best plans for you!"
+            break;
+        }
+        const intervalID = typeMessage(currentMessage);
+        return () => {
+            clearInterval(intervalID);
+        };
+    }
+}, [loading]); // Only watch the loading state here
+
+  useEffect(() => {
+    if (step > 1) { // Only start the loader from step 3 onwards
       setLoading(true);
       const randomDelay = Math.random() * 1500 + 500;
       const timeout = setTimeout(() => {
@@ -36,22 +99,19 @@ function ChatBot() {
     } else if (step === 3) {
       setStep(4);
     } else if (step === 4) {
-      // Handle the transition to the next step (step 5)
       setStep(5);
     } else if (step === 5) {
-      // Handle the transition to the next step (step 6)
       setStep(6);
     } else if (step === 6) {
-      // Handle the transition to the next step (step 7)
       setStep(7);
     } else if (step === 7) {
-      // Handle the transition to the next step (step 8)
       setStep(8);
     }
   };
 
   const handleBack = () => {
     if (step > 1) {
+      setTypedMessage("");
       setStep(step - 1);
     }
   };
@@ -69,37 +129,37 @@ function ChatBot() {
             </div>
       );
     } else if (step === 1) {
-        return (
-          <div className="chat-box">
-            <p className="chat-message">Welcome! My name is Martin, and I'm going to ask you some questions to help you decide on a Verizon Unlimited phone plan.</p>
-            <button onClick={handleNext}>Let's get started</button>
-          </div>
-        );
+      return (
+        <div className="chat-box">
+          <p className="chat-message">{typedMessage}</p>
+          <button onClick={handleNext}>Let's get started</button>
+        </div>
+      );
     } else if (step === 2) {
       return (
-            <div className="chat-box">
-              <p className="chat-message">Let's learn more about what you want! How many lines would you like to have on your plan?</p>
-              <input
-                type="range"
-                min="1"
-                max="5"
-                value={selectedLines}
-                onChange={handleSliderChange}
-              />
-              {selectedLines < 5 && <span>{selectedLines} Line(s)</span>}
-              {selectedLines === 5 && <span>{selectedLines}+ Line(s)</span>}
-              <button onClick={handleNext} title="Proceed to the next step" className="small-button">
-                Next <i className="fas fa-arrow-right"></i></button>
-                {step > 1 && (<button onClick={handleBack} 
-                title="Go back to the previous step" className="small-button">
-                <i className="fas fa-arrow-left"></i> Back 
-              </button>)}
-            </div>
+        <div className="chat-box">
+          <p className="chat-message">{typedMessage}</p>
+          <input
+            type="range"
+            min="1"
+            max="5"
+            value={selectedLines}
+            onChange={handleSliderChange}
+          />
+          {selectedLines < 5 && <span>{selectedLines} Line(s)</span>}
+          {selectedLines === 5 && <span>{selectedLines}+ Line(s)</span>}
+          <button onClick={handleNext} title="Proceed to the next step" className="small-button">
+            Next <i className="fas fa-arrow-right"></i></button>
+            {step > 1 && (<button onClick={handleBack} 
+            title="Go back to the previous step" className="small-button">
+            <i className="fas fa-arrow-left"></i> Back 
+          </button>)}
+        </div>
       );
     } else if (step === 3) {
       return (
         <div className="chat-box">
-          <p className="chat-message">How many of each connected device are you adding to your plan?</p>
+          <p className="chat-message">{typedMessage}</p>
           <div>
             <p>Smart Watch</p>
             <input
@@ -144,7 +204,7 @@ function ChatBot() {
     } else if (step === 4) {
       return (
         <div className="chat-box">
-          <p className="chat-message">Do you fall under any of the following?</p>
+          <p className="chat-message">{typedMessage}</p>
             <label>
               <input
                 type="radio"
@@ -186,7 +246,7 @@ function ChatBot() {
     } else if (step === 5) {
       return (
         <div className="chat-box">
-          <p className="chat-message">Do you prefer any of the upgrades in each of these categories below?</p>
+          <p className="chat-message">{typedMessage}</p>
           <div>
             <p>Mobile Hotspot</p>
             <select>
@@ -231,7 +291,7 @@ function ChatBot() {
     } else if (step === 6) {
       return (
         <div className="chat-box">
-          <p className="chat-message">Select all services you are interested in using or currently are subscribed to.</p>
+          <p className="chat-message">{typedMessage}</p>
             <label>
               <input type="checkbox" value="Verizon Fios Internet" />
               Verizon Fios Internet
@@ -275,7 +335,7 @@ function ChatBot() {
     } else if (step === 7) {
       return (
         <div className="chat-box">
-          <p className="chat-message"><em>I'm determining the best plans for you!</em></p>
+          <p className="chat-message"><em>{typedMessage}</em></p>
           <PulseLoader color="red" loading={true} size={15} />
         </div>
       );
