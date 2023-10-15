@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './what_you_talking.css'; // Import your CSS file
 import PulseLoader from 'react-spinners/PulseLoader';
 import avatar from './avatar.png'; // Import the avatar image
@@ -10,6 +10,19 @@ function ChatBot() {
   const [jetpackHotspot, setJetpackHotspot] = useState(0);
   const [cellularTablet, setCellularTablet] = useState(0);
   const [userClassification, setUserClassification] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  // Inside ChatBot component:
+  useEffect(() => {
+    if (step > 2) { // Only start the loader from step 3 onwards
+      setLoading(true);
+      const randomDelay = Math.random() * 1500 + 500;
+      const timeout = setTimeout(() => {
+        setLoading(false);
+      }, randomDelay); // 1.5 seconds
+      return () => clearTimeout(timeout); // Clear the timeout when component unmounts or when step changes
+    }
+  }, [step]);
 
   const handleSliderChange = (event) => {
     setSelectedLines(parseInt(event.target.value));
@@ -48,7 +61,19 @@ function ChatBot() {
   };
 
   const getScreen = () => {
-    if (step === 1) {
+    if (loading) {
+      return (
+        <div className="chat-container">
+          <div className="avatar-container">
+            <img src={avatar} alt="Avatar" className="avatar" />
+          </div>
+          <div className="chat-box">
+            <h1 className="chat-message">I'm processing your answer...</h1>
+            <PulseLoader color="red" loading={true} size={15} />
+          </div>
+        </div>
+      );
+    } else if (step === 1) {
       return (
         <div>
           <div className="chat-container">
@@ -298,7 +323,7 @@ function ChatBot() {
               <img src={avatar} alt="Avatar" className="avatar" />
             </div>
             <div className="chat-box">
-              <h1 className="chat-message">Calculating the best plan fit for you!</h1>
+              <h1 className="chat-message">I'm determining the best plans for you!</h1>
               <PulseLoader color="red" loading={true} size={15} />
             </div>
           </div>

@@ -126,25 +126,26 @@ app.post('/chat', async (req, res) => {
     const user_input = req.body.user_input;
     // user_input map:
     // keys:
-        // numLines: int (1 to 5)
-        // numSmartWatches: (0 to 5)
-        // numJetpackHotspots: (0 to 5)
-        // numCellularTablets: (0 to 5)
+        // user_input["numLines"]: int (1 to 5)
+        // user_input["numSmartWatches"]: (0 to 5)
+        // user_input["numJetpackHotspots"]: (0 to 5)
+        // user_input["numCellularTablets"]: (0 to 5)
 
-        // qualifyingGroup: string
-        // hotspotAmt: int
-        // cloudBackup: int
-        // connectivity: bool
-        // videoStreaming: int
+        // user_input["qualifyingGroup"]: string
+        // user_input["hotspotAmt"]: int
+        // user_input["cloudBackup"]: int
+        // user_input["connectivity"]: bool
+        // user_input["videoStreaming"]: int
 
-        // serviceFios: bool
-        // serviceAppleMusic: bool
-        // serviceAppleArcade: bool
-        // serviceGooglePlayPass: bool
-        // serviceDisney: bool
-        // streamingHulu: bool
-        // streamingESPN: bool
-        // streamingAppleTV: bool
+        // user_input["serviceFios"]: bool
+        // user_input["serviceAppleMusic"]: bool
+        // user_input["serviceAppleArcade"]: bool
+        // user_input["serviceGooglePlayPass"]: bool
+        // user_input["serviceDisney"]: bool
+        // user_input["streamingHulu"]: bool
+        // user_input["streamingESPN"]: bool
+        // user_input["streamingAppleTV"]: bool
+
     
     // Exit condition
     if (user_input.toLowerCase() === 'exit') {
