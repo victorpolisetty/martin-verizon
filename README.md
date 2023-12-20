@@ -4,6 +4,8 @@
 
 Created for UF AI Days Gator Hack (Sponsored by Verizon)
 
+Outcome: FINALIST!!!!!
+
 https://devpost.com/software/kim-s-convenience
 
 ## Installation and Local Deployment
